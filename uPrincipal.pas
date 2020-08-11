@@ -5,10 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, uDTM, Vcl.ComCtrls,
-  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus;
+  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus,
+  BancoDados;
 
 type
-  TForm1 = class(TForm)
+  TfrmPrincipal = class(TForm)
     pnlData: TPanel;
     pnlGrid: TPanel;
     pnlInfos: TPanel;
@@ -46,12 +47,11 @@ type
     bitNovaVenda: TBitBtn;
     bitOS: TBitBtn;
     bitImpressão: TBitBtn;
-    edtLocalBanco: TEdit;
-    btnConectar: TButton;
     mnuPrincipal: TMainMenu;
-    BancodedadosRede1: TMenuItem;
-    BancodedadosRede2: TMenuItem;
-    procedure btnConectarClick(Sender: TObject);
+    Arquivo: TMenuItem;
+    BancodedadosRede: TMenuItem;
+    procedure BancodedadosRedeClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,16 +59,30 @@ type
   end;
 
 var
-  Form1: TForm1;
+  frmPrincipal: TfrmPrincipal;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.btnConectarClick(Sender: TObject);
+procedure TfrmPrincipal.BancodedadosRedeClick(Sender: TObject);
 begin
+  try
+    Application.CreateForm(TfrmBancoDados, frmBancoDados);
+    frmBancoDados.ShowModal;
+  finally
+    frmBancoDados.FreeOnRelease;
+  end;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+var
+  abrirTXT : TStringStream;
+begin
+  abrirTXT := TStringStream.Create();
+  abrirTXT.LoadFromFile(ExtractFilePath(Application.ExeName)+'Conf\CaminhoBanco.txt');
   with dtmPrincipal do begin
-    conPrincipal.Params.Database := edtLocalBanco.Text;
+    conPrincipal.Params.Database := abrirTXT.DataString;
     conPrincipal.Connected := True;
     qryPrincipal.Active := True;
   end;

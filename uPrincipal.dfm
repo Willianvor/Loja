@@ -1,7 +1,7 @@
-﻿object Form1: TForm1
+﻿object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Loja - Vendas'
   ClientHeight = 571
   ClientWidth = 1184
   Color = clBtnFace
@@ -13,6 +13,7 @@
   Menu = mnuPrincipal
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object pnlData: TPanel
@@ -37,23 +38,6 @@
       Date = 44052.000000000000000000
       Time = 0.764210219909728000
       TabOrder = 0
-    end
-    object edtLocalBanco: TEdit
-      Left = 416
-      Top = 10
-      Width = 409
-      Height = 22
-      TabOrder = 1
-      Text = 'C:\SHARMAQ\SHOficina\Loja.MDB'
-    end
-    object btnConectar: TButton
-      Left = 335
-      Top = 9
-      Width = 75
-      Height = 25
-      Caption = 'CONECTAR'
-      TabOrder = 2
-      OnClick = btnConectarClick
     end
   end
   object pnlGrid: TPanel
@@ -424,10 +408,11 @@
   end
   object mnuPrincipal: TMainMenu
     Left = 264
-    object BancodedadosRede1: TMenuItem
+    object Arquivo: TMenuItem
       Caption = 'Arquivo'
-      object BancodedadosRede2: TMenuItem
+      object BancodedadosRede: TMenuItem
         Caption = 'Banco de dados (Rede)'
+        OnClick = BancodedadosRedeClick
       end
     end
   end
