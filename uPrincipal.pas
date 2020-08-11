@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, uDTM, Vcl.ComCtrls,
-  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus;
+  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus, uVenda;
 
 type
   TfrmPrincipal = class(TForm)
@@ -46,9 +46,10 @@ type
     menuPrincipal: TMainMenu;
     Arquivo1: TMenuItem;
     BancodeDadosRede1: TMenuItem;
-    Button1: TButton;
+    btnVenda: TButton;
     procedure BancodeDadosRede1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnVendaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,6 +76,16 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.btnVendaClick(Sender: TObject);
+begin
+  try
+    Application.CreateForm(TFrmVenda, frmVenda);
+    frmVenda.ShowModal;
+  finally
+    frmVenda.FreeOnRelease;
+  end;
+end;
+
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 var
   abrirTXT : TStringStream;

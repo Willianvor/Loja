@@ -381,13 +381,14 @@ object frmPrincipal: TfrmPrincipal
     Height = 59
     Align = alBottom
     TabOrder = 3
-    object Button1: TButton
+    object btnVenda: TButton
       Left = 8
       Top = 6
       Width = 75
       Height = 25
-      Caption = 'Button1'
+      Caption = 'VENDA'
       TabOrder = 0
+      OnClick = btnVendaClick
     end
   end
   object menuPrincipal: TMainMenu
