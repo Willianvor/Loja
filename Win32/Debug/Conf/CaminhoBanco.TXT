@@ -1,2 +1,1 @@
-\\WILLIAN\Bancos\Loja.mdb
-
+C:\Users\windows\Documents\Embarcadero\Studio\Projects\- Github\Loja\Loja.mdb
