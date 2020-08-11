@@ -80,6 +80,7 @@ procedure TfrmPrincipal.btnVendaClick(Sender: TObject);
 begin
   try
     Application.CreateForm(TFrmVenda, frmVenda);
+    dtmPrincipal.qryPrincipal.Append;
     frmVenda.ShowModal;
   finally
     frmVenda.FreeOnRelease;

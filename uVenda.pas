@@ -17,25 +17,29 @@ type
     dblUsuario: TDBLookupComboBox;
     lblData: TLabel;
     dtpDataVenda: TDateTimePicker;
-    Label1: TLabel;
-    DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
-    Label3: TLabel;
-    DBEdit3: TDBEdit;
-    Label4: TLabel;
-    DBEdit4: TDBEdit;
-    Label5: TLabel;
-    DBEdit5: TDBEdit;
-    Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBEdit7: TDBEdit;
-    Label8: TLabel;
-    DBEdit8: TDBEdit;
-    Label9: TLabel;
-    DBEdit9: TDBEdit;
+    lblDescricao: TLabel;
+    dbeDescricao: TDBEdit;
+    lblServico: TLabel;
+    dbeServico: TDBEdit;
+    lblDesconto: TLabel;
+    dbeDesconto: TDBEdit;
+    lblDinheiro: TLabel;
+    dbeDinheiro: TDBEdit;
+    lblCartao: TLabel;
+    dbeCartao: TDBEdit;
+    lblCusto: TLabel;
+    dbeCusto: TDBEdit;
+    lblLucro: TLabel;
+    dbeLucro: TDBEdit;
+    lblDebito: TLabel;
+    dbeDebito: TDBEdit;
+    lblNaoFaturar: TLabel;
+    dbeNaoFaturar: TDBEdit;
     procedure FormShow(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure dtpDataVendaChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,6 +52,29 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmVenda.btnCancelarClick(Sender: TObject);
+begin
+  dtmPrincipal.qryPrincipal.Cancel;
+  ModalResult := mrCancel;
+end;
+
+procedure TfrmVenda.btnSalvarClick(Sender: TObject);
+begin
+  dtmPrincipal.qryPrincipal.FieldByName('dt_data').Value := dtpDataVenda.Date;
+  dtmPrincipal.qryPrincipal.Post;
+  ModalResult := mrOk;
+end;
+
+procedure TfrmVenda.dtpDataVendaChange(Sender: TObject);
+begin
+  dtmPrincipal.qryPrincipal.FieldByName('dt_data').Value := dtpDataVenda.Date;
+end;
+
+procedure TfrmVenda.FormActivate(Sender: TObject);
+begin
+  dtmPrincipal.qryPrincipal.FieldByName('dt_data').Value := dtpDataVenda.Date;
+end;
 
 procedure TfrmVenda.FormShow(Sender: TObject);
 begin

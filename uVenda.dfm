@@ -2,7 +2,7 @@ object frmVenda: TfrmVenda
   Left = 0
   Top = 0
   Caption = 'Venda'
-  ClientHeight = 470
+  ClientHeight = 358
   ClientWidth = 447
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,6 +12,7 @@ object frmVenda: TfrmVenda
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnActivate = FormActivate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -19,99 +20,99 @@ object frmVenda: TfrmVenda
     Left = 0
     Top = 0
     Width = 447
-    Height = 429
+    Height = 317
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = 8
     ExplicitTop = 1
-    ExplicitHeight = 160
     object lblUsuario: TLabel
-      Left = 8
+      Left = 21
       Top = 8
       Width = 46
       Height = 13
       Caption = 'USU'#193'RIO'
     end
     object lblData: TLabel
-      Left = 168
+      Left = 181
       Top = 11
       Width = 27
       Height = 13
       Caption = 'DATA'
     end
-    object Label1: TLabel
-      Left = 16
-      Top = 72
-      Width = 65
+    object lblDescricao: TLabel
+      Left = 21
+      Top = 76
+      Width = 59
       Height = 13
-      Caption = 'nm_descricao'
-      FocusControl = DBEdit1
+      Caption = 'DESCRI'#199#195'O'
+      FocusControl = dbeDescricao
     end
-    object Label2: TLabel
-      Left = 16
-      Top = 112
-      Width = 52
-      Height = 13
-      Caption = 'vlr_servico'
-      FocusControl = DBEdit2
-    end
-    object Label3: TLabel
-      Left = 16
-      Top = 152
-      Width = 103
-      Height = 13
-      Caption = 'vlr_desconto_usuario'
-      FocusControl = DBEdit3
-    end
-    object Label4: TLabel
-      Left = 16
-      Top = 192
-      Width = 56
-      Height = 13
-      Caption = 'vlr_dinheiro'
-      FocusControl = DBEdit4
-    end
-    object Label5: TLabel
-      Left = 16
-      Top = 232
-      Width = 49
-      Height = 13
-      Caption = 'vlr_cartao'
-      FocusControl = DBEdit5
-    end
-    object Label6: TLabel
-      Left = 16
-      Top = 272
+    object lblServico: TLabel
+      Left = 36
+      Top = 103
       Width = 44
       Height = 13
-      Caption = 'vlr_custo'
-      FocusControl = DBEdit6
+      Caption = 'SERVI'#199'O'
+      FocusControl = dbeServico
     end
-    object Label7: TLabel
-      Left = 16
-      Top = 312
-      Width = 41
+    object lblDesconto: TLabel
+      Left = 25
+      Top = 130
+      Width = 55
       Height = 13
-      Caption = 'vlr_lucro'
-      FocusControl = DBEdit7
+      Caption = 'DESCONTO'
+      FocusControl = dbeDesconto
     end
-    object Label8: TLabel
-      Left = 16
-      Top = 352
-      Width = 48
+    object lblDinheiro: TLabel
+      Left = 30
+      Top = 157
+      Width = 50
       Height = 13
-      Caption = 'vlr_debito'
-      FocusControl = DBEdit8
+      Caption = 'DINHEIRO'
+      FocusControl = dbeDinheiro
     end
-    object Label9: TLabel
-      Left = 16
-      Top = 392
-      Width = 76
+    object lblCartao: TLabel
+      Left = 38
+      Top = 184
+      Width = 42
       Height = 13
-      Caption = 'vlr_nao_faturar'
-      FocusControl = DBEdit9
+      Caption = 'CART'#195'O'
+      FocusControl = dbeCartao
+    end
+    object lblCusto: TLabel
+      Left = 46
+      Top = 211
+      Width = 34
+      Height = 13
+      Caption = 'CUSTO'
+      FocusControl = dbeCusto
+    end
+    object lblLucro: TLabel
+      Left = 46
+      Top = 238
+      Width = 34
+      Height = 13
+      Caption = 'LUCRO'
+      FocusControl = dbeLucro
+    end
+    object lblDebito: TLabel
+      Left = 43
+      Top = 265
+      Width = 37
+      Height = 13
+      Caption = 'D'#201'BITO'
+      FocusControl = dbeDebito
+    end
+    object lblNaoFaturar: TLabel
+      Left = 8
+      Top = 292
+      Width = 72
+      Height = 13
+      Caption = 'N'#195'O FATURAR'
+      FocusControl = dbeNaoFaturar
     end
     object dblUsuario: TDBLookupComboBox
-      Left = 8
+      Left = 21
       Top = 27
       Width = 145
       Height = 21
@@ -123,90 +124,91 @@ object frmVenda: TfrmVenda
       TabOrder = 0
     end
     object dtpDataVenda: TDateTimePicker
-      Left = 168
+      Left = 181
       Top = 27
       Width = 97
       Height = 21
       Date = 44044.000000000000000000
       Time = 0.507645312500244500
       TabOrder = 1
+      OnChange = dtpDataVendaChange
     end
-    object DBEdit1: TDBEdit
-      Left = 16
-      Top = 88
-      Width = 3319
+    object dbeDescricao: TDBEdit
+      Left = 86
+      Top = 73
+      Width = 282
       Height = 21
       DataField = 'nm_descricao'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 2
     end
-    object DBEdit2: TDBEdit
-      Left = 16
-      Top = 128
-      Width = 134
+    object dbeServico: TDBEdit
+      Left = 86
+      Top = 100
+      Width = 90
       Height = 21
       DataField = 'vlr_servico'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 3
     end
-    object DBEdit3: TDBEdit
-      Left = 16
-      Top = 168
-      Width = 134
+    object dbeDesconto: TDBEdit
+      Left = 86
+      Top = 127
+      Width = 90
       Height = 21
       DataField = 'vlr_desconto_usuario'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 4
     end
-    object DBEdit4: TDBEdit
-      Left = 16
-      Top = 208
-      Width = 134
+    object dbeDinheiro: TDBEdit
+      Left = 86
+      Top = 154
+      Width = 90
       Height = 21
       DataField = 'vlr_dinheiro'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 5
     end
-    object DBEdit5: TDBEdit
-      Left = 16
-      Top = 248
-      Width = 134
+    object dbeCartao: TDBEdit
+      Left = 86
+      Top = 181
+      Width = 90
       Height = 21
       DataField = 'vlr_cartao'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 6
     end
-    object DBEdit6: TDBEdit
-      Left = 16
-      Top = 288
-      Width = 134
+    object dbeCusto: TDBEdit
+      Left = 86
+      Top = 208
+      Width = 90
       Height = 21
       DataField = 'vlr_custo'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 7
     end
-    object DBEdit7: TDBEdit
-      Left = 16
-      Top = 328
-      Width = 134
+    object dbeLucro: TDBEdit
+      Left = 86
+      Top = 235
+      Width = 90
       Height = 21
       DataField = 'vlr_lucro'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 8
     end
-    object DBEdit8: TDBEdit
-      Left = 16
-      Top = 368
-      Width = 134
+    object dbeDebito: TDBEdit
+      Left = 86
+      Top = 262
+      Width = 90
       Height = 21
       DataField = 'vlr_debito'
       DataSource = dtmPrincipal.dtsPrincipal
       TabOrder = 9
     end
-    object DBEdit9: TDBEdit
-      Left = 16
-      Top = 408
-      Width = 134
+    object dbeNaoFaturar: TDBEdit
+      Left = 86
+      Top = 289
+      Width = 90
       Height = 21
       DataField = 'vlr_nao_faturar'
       DataSource = dtmPrincipal.dtsPrincipal
@@ -215,12 +217,12 @@ object frmVenda: TfrmVenda
   end
   object pnlComandos: TPanel
     Left = 0
-    Top = 429
+    Top = 317
     Width = 447
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 8
+    ExplicitTop = 316
     object btnSalvar: TButton
       Left = 8
       Top = 7
@@ -228,6 +230,7 @@ object frmVenda: TfrmVenda
       Height = 25
       Caption = 'SALVAR'
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 363
@@ -236,6 +239,7 @@ object frmVenda: TfrmVenda
       Height = 25
       Caption = 'CANCELAR'
       TabOrder = 1
+      OnClick = btnCancelarClick
     end
   end
 end

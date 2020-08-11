@@ -392,8 +392,8 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object menuPrincipal: TMainMenu
-    Left = 584
-    Top = 288
+    Left = 1000
+    Top = 352
     object Arquivo1: TMenuItem
       Caption = 'Arquivo'
       object BancodeDadosRede1: TMenuItem
