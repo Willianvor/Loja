@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, uDTM, Vcl.ComCtrls,
-  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus,
-  BancoDados;
+  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus;
 
 type
   TfrmPrincipal = class(TForm)
@@ -44,13 +43,11 @@ type
     Panel1: TPanel;
     Panel4: TPanel;
     pnlDespesas: TPanel;
-    bitNovaVenda: TBitBtn;
-    bitOS: TBitBtn;
-    bitImpressão: TBitBtn;
-    mnuPrincipal: TMainMenu;
-    Arquivo: TMenuItem;
-    BancodedadosRede: TMenuItem;
-    procedure BancodedadosRedeClick(Sender: TObject);
+    menuPrincipal: TMainMenu;
+    Arquivo1: TMenuItem;
+    BancodeDadosRede1: TMenuItem;
+    Button1: TButton;
+    procedure BancodeDadosRede1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -65,7 +62,10 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmPrincipal.BancodedadosRedeClick(Sender: TObject);
+uses BancoDados;
+
+
+procedure TfrmPrincipal.BancodeDadosRede1Click(Sender: TObject);
 begin
   try
     Application.CreateForm(TfrmBancoDados, frmBancoDados);
@@ -74,7 +74,7 @@ begin
     frmBancoDados.FreeOnRelease;
   end;
 end;
-
+
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 var
   abrirTXT : TStringStream;

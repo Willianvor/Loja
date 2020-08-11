@@ -1,4 +1,4 @@
-﻿object frmPrincipal: TfrmPrincipal
+object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Loja - Vendas'
@@ -10,7 +10,7 @@
   Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = mnuPrincipal
+  Menu = menuPrincipal
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
@@ -381,38 +381,23 @@
     Height = 59
     Align = alBottom
     TabOrder = 3
-    object bitNovaVenda: TBitBtn
+    object Button1: TButton
       Left = 8
-      Top = 8
-      Width = 89
-      Height = 43
-      Caption = 'VENDA'
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'Button1'
       TabOrder = 0
     end
-    object bitOS: TBitBtn
-      Left = 103
-      Top = 8
-      Width = 89
-      Height = 43
-      Caption = 'OS'
-      TabOrder = 1
-    end
-    object bitImpressão: TBitBtn
-      Left = 198
-      Top = 8
-      Width = 89
-      Height = 43
-      Caption = 'IMPRESS'#195'O'
-      TabOrder = 2
-    end
   end
-  object mnuPrincipal: TMainMenu
-    Left = 264
-    object Arquivo: TMenuItem
+  object menuPrincipal: TMainMenu
+    Left = 584
+    Top = 288
+    object Arquivo1: TMenuItem
       Caption = 'Arquivo'
-      object BancodedadosRede: TMenuItem
-        Caption = 'Banco de dados (Rede)'
-        OnClick = BancodedadosRedeClick
+      object BancodeDadosRede1: TMenuItem
+        Caption = 'Banco de Dados (Rede)'
+        OnClick = BancodeDadosRede1Click
       end
     end
   end
