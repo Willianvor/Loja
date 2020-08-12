@@ -5,7 +5,7 @@ object dtmPrincipal: TdtmPrincipal
   object conPrincipal: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\' +
+        'Database=C:\Users\windows\Documents\Embarcadero\Studio\Projects\' +
         '- Github\Loja\Loja.mdb'
       'User_Name=administrador'
       'Password=1407'
@@ -16,7 +16,6 @@ object dtmPrincipal: TdtmPrincipal
     Top = 6
   end
   object qryPrincipal: TFDQuery
-    Active = True
     Connection = conPrincipal
     SQL.Strings = (
       'select * from tb_vendas inner join tb_usuario'

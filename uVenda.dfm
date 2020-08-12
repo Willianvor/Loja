@@ -108,11 +108,9 @@ object frmVenda: TfrmVenda
     Width = 458
     Height = 41
     Align = alBottom
-    TabOrder = 0
-    ExplicitTop = 317
-    ExplicitWidth = 447
+    TabOrder = 11
     object btnSalvar: TButton
-      Left = 8
+      Left = 13
       Top = 7
       Width = 75
       Height = 25
@@ -137,7 +135,7 @@ object frmVenda: TfrmVenda
     Height = 21
     DataField = 'vlr_debito'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 1
+    TabOrder = 9
   end
   object dbeDesconto: TDBEdit
     Left = 125
@@ -146,7 +144,7 @@ object frmVenda: TfrmVenda
     Height = 21
     DataField = 'vlr_desconto_usuario'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 2
+    TabOrder = 8
   end
   object dbeNaoFaturar: TDBEdit
     Left = 341
@@ -155,7 +153,7 @@ object frmVenda: TfrmVenda
     Height = 21
     DataField = 'vlr_nao_faturar'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 3
+    TabOrder = 10
   end
   object dbeServico: TDBEdit
     Left = 29
@@ -164,7 +162,7 @@ object frmVenda: TfrmVenda
     Height = 21
     DataField = 'vlr_servico'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 4
+    TabOrder = 7
   end
   object dbeCusto: TDBEdit
     Left = 221
@@ -195,7 +193,7 @@ object frmVenda: TfrmVenda
     KeyField = 'id_usuario'
     ListField = 'nm_usuario'
     ListSource = dtmPrincipal.dtsUsuario
-    TabOrder = 7
+    TabOrder = 0
   end
   object dtpDataVenda: TDateTimePicker
     Left = 203
@@ -204,7 +202,7 @@ object frmVenda: TfrmVenda
     Height = 21
     Date = 44044.000000000000000000
     Time = 0.507645312500244500
-    TabOrder = 8
+    TabOrder = 1
     OnChange = dtpDataVendaChange
   end
   object dbcDescricao: TDBComboBox
@@ -216,7 +214,7 @@ object frmVenda: TfrmVenda
     CharCase = ecUpperCase
     DataField = 'nm_descricao'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 9
+    TabOrder = 2
   end
   object dbeCartao: TDBEdit
     Left = 125
@@ -225,7 +223,7 @@ object frmVenda: TfrmVenda
     Height = 21
     DataField = 'vlr_cartao'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 10
+    TabOrder = 4
   end
   object dbeDinheiro: TDBEdit
     Left = 29
@@ -234,6 +232,7 @@ object frmVenda: TfrmVenda
     Height = 21
     DataField = 'vlr_dinheiro'
     DataSource = dtmPrincipal.dtsPrincipal
-    TabOrder = 11
+    TabOrder = 3
+    OnChange = dbeDinheiroChange
   end
 end

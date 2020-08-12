@@ -51,9 +51,13 @@ type
     Arquivo1: TMenuItem;
     BancodeDadosRede1: TMenuItem;
     btnVenda: TButton;
+    btnAlterar: TButton;
+    btnExcluir: TButton;
     procedure BancodeDadosRede1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnVendaClick(Sender: TObject);
+    procedure btnAlterarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,12 +107,35 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.btnAlterarClick(Sender: TObject);
+begin
+  try
+    Application.CreateForm(TFrmVenda, frmVenda);
+    dtmPrincipal.qryPrincipal.Edit;
+    if frmVenda.ShowModal = mrok then
+      dtmPrincipal.qryPrincipal.Refresh;
+  finally
+    frmVenda.FreeOnRelease;
+  end;
+end;
+
+procedure TfrmPrincipal.btnExcluirClick(Sender: TObject);
+var desc : string;
+begin
+  desc := dtmPrincipal.qryPrincipal.fieldbyname('nm_descricao').value;
+
+  if Application.MessageBox(Pchar('Deseja excluir o registro selecionado?' + slinebreak
+  + desc), 'Atenção', mb_yesno+mb_iconexclamation) = mrYes then
+    dtmPrincipal.qryPrincipal.Delete;
+end;
+
 procedure TfrmPrincipal.btnVendaClick(Sender: TObject);
 begin
   try
     Application.CreateForm(TFrmVenda, frmVenda);
     dtmPrincipal.qryPrincipal.Append;
-    frmVenda.ShowModal;
+    if frmVenda.ShowModal = mrok then
+      dtmPrincipal.qryPrincipal.Refresh;
   finally
     frmVenda.FreeOnRelease;
   end;
@@ -120,11 +147,15 @@ var
 begin
   abrirTXT := TStringStream.Create();
   abrirTXT.LoadFromFile(ExtractFilePath(Application.ExeName)+'Conf\CaminhoBanco.txt');
-  with dtmPrincipal do begin
-    conPrincipal.Params.Database := abrirTXT.DataString;
-    conPrincipal.Connected := True;
-    qryPrincipal.Active := True;
-    qryUsuario.Active   := True;
+  try
+    with dtmPrincipal do begin
+      conPrincipal.Params.Database := abrirTXT.DataString;
+      conPrincipal.Connected := True;
+      qryPrincipal.Active := True;
+      qryUsuario.Active   := True;
+    end;
+  except
+    Application.MessageBox('Banco de dados não encontrado.', 'Erro', mb_ok+MB_ICONERROR );
   end;
 end;
 

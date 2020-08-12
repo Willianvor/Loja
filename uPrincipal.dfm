@@ -54,6 +54,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 388
       Align = alClient
       DataSource = dtmPrincipal.dtsPrincipal
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -388,6 +389,8 @@ object frmPrincipal: TfrmPrincipal
     Height = 59
     Align = alBottom
     TabOrder = 3
+    ExplicitLeft = -1
+    ExplicitTop = 517
     object btnVenda: TButton
       Left = 8
       Top = 6
@@ -396,6 +399,24 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'VENDA'
       TabOrder = 0
       OnClick = btnVendaClick
+    end
+    object btnAlterar: TButton
+      Left = 89
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'ALTERAR'
+      TabOrder = 1
+      OnClick = btnAlterarClick
+    end
+    object btnExcluir: TButton
+      Left = 170
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'EXCLUIR'
+      TabOrder = 2
+      OnClick = btnExcluirClick
     end
   end
   object menuPrincipal: TMainMenu

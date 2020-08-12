@@ -65,8 +65,8 @@ procedure TfrmVenda.CalculaLucro();
 begin
   with dtmPrincipal.qryPrincipal do begin
     if State = dsInsert then begin
-      FieldByName('vlr_lucro').Value := FieldByName('vlr_dinheiro').Value
-      + FieldByName('vlr_cartao').Value - FieldByName('vlr_custo').Value;
+      FieldByName('vlr_lucro').AsFloat := FieldByName('vlr_dinheiro').AsFloat
+      + FieldByName('vlr_cartao').AsFloat - FieldByName('vlr_custo').AsFloat;
     end;
   end;
 end;
@@ -107,7 +107,7 @@ end;
 procedure TfrmVenda.FormActivate(Sender: TObject);
 begin
   dtmPrincipal.qryPrincipal.FieldByName('dt_data').Value := dtpDataVenda.Date;
-  dblUsuario.KeyValue := 1;
+  dtmPrincipal.qryPrincipal.FieldByName('fk_nm_usuario').Value := 1;
   frmPrincipal.CarregaDescricao(dbcDescricao, 'nm_descricao', 'tb_vendas');
 end;
 
