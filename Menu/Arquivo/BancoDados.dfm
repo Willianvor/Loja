@@ -22,8 +22,6 @@ object frmBancoDados: TfrmBancoDados
     Height = 49
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 447
-    ExplicitHeight = 160
     object edtCaminhoBanco: TEdit
       Left = 16
       Top = 14
@@ -48,8 +46,6 @@ object frmBancoDados: TfrmBancoDados
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 160
-    ExplicitWidth = 447
     object btnSalvar: TButton
       Left = 16
       Top = 8

@@ -15,6 +15,5 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdtmPrincipal, dtmPrincipal);
   Application.CreateForm(TfrmBancoDados, frmBancoDados);
-  Application.CreateForm(TfrmVenda, frmVenda);
   Application.Run;
 end.

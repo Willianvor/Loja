@@ -5,7 +5,11 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, uDTM, Vcl.ComCtrls,
-  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus, uVenda;
+  Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Menus, uVenda,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.DBCtrls;
 
 type
   TfrmPrincipal = class(TForm)
@@ -53,6 +57,7 @@ type
   private
     { Private declarations }
   public
+    procedure CarregaDescricao(combo: TDBComboBox; campo, tabela : string);
     { Public declarations }
   end;
 
@@ -65,6 +70,28 @@ implementation
 
 uses BancoDados;
 
+procedure TfrmPrincipal.CarregaDescricao(combo : TDBComboBox; campo, tabela : string);
+var
+  qryItems : TFDQuery;
+begin
+  qryItems := TFDQuery.Create(nil);
+  qryItems.Connection := dtmPrincipal.conPrincipal;
+  try
+    with qryItems do begin
+      Close;
+      SQL.Clear;
+      SQL.Add('select ' + campo + ' from ' + tabela);
+      Open();
+    end;
+
+    while not qryItems.Eof do begin
+      combo.Items.Add(qryItems.Fields[0].AsString);
+      qryItems.Next;
+    end;
+  finally
+    qryItems.Free;
+  end;
+end;
 
 procedure TfrmPrincipal.BancodeDadosRede1Click(Sender: TObject);
 begin
@@ -97,6 +124,7 @@ begin
     conPrincipal.Params.Database := abrirTXT.DataString;
     conPrincipal.Connected := True;
     qryPrincipal.Active := True;
+    qryUsuario.Active   := True;
   end;
 end;
 

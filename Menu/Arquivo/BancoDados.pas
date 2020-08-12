@@ -53,6 +53,7 @@ begin
       conPrincipal.Params.Database := edtCaminhoBanco.Text;
       conPrincipal.Connected := True;
       qryPrincipal.Active := True;
+      qryUsuario.Active   := True;
     end;
   finally
     ModalResult := mrOk;
