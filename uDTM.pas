@@ -31,6 +31,8 @@ type
     qryPrincipalvlr_nao_faturar: TCurrencyField;
     qryPrincipalid_usuario: TIntegerField;
     qryPrincipalnm_usuario: TWideStringField;
+    qryConf: TFDQuery;
+    dtsConf: TDataSource;
   private
     { Private declarations }
   public

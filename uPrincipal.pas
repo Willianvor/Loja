@@ -53,6 +53,7 @@ type
     btnVenda: TButton;
     btnAlterar: TButton;
     btnExcluir: TButton;
+    btnOS: TButton;
     procedure BancodeDadosRede1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnVendaClick(Sender: TObject);
@@ -109,24 +110,33 @@ end;
 
 procedure TfrmPrincipal.btnAlterarClick(Sender: TObject);
 begin
-  try
-    Application.CreateForm(TFrmVenda, frmVenda);
-    dtmPrincipal.qryPrincipal.Edit;
-    if frmVenda.ShowModal = mrok then
-      dtmPrincipal.qryPrincipal.Refresh;
-  finally
-    frmVenda.FreeOnRelease;
+  if dtmPrincipal.qryPrincipal.RowsAffected <= 0 then begin
+    Application.MessageBox('Sem registros para alterar.', 'Atenção', mb_ok+MB_ICONINFORMATION);
+  end else begin
+    try
+      Application.CreateForm(TFrmVenda, frmVenda);
+      dtmPrincipal.qryPrincipal.Edit;
+      if frmVenda.ShowModal = mrok then
+        dtmPrincipal.qryPrincipal.Refresh;
+    finally
+      frmVenda.FreeOnRelease;
+    end;
   end;
 end;
 
 procedure TfrmPrincipal.btnExcluirClick(Sender: TObject);
 var desc : string;
 begin
-  desc := dtmPrincipal.qryPrincipal.fieldbyname('nm_descricao').value;
-
-  if Application.MessageBox(Pchar('Deseja excluir o registro selecionado?' + slinebreak
-  + desc), 'Atenção', mb_yesno+mb_iconexclamation) = mrYes then
-    dtmPrincipal.qryPrincipal.Delete;
+  if dtmPrincipal.qryPrincipal.RowsAffected <= 0 then begin
+    Application.MessageBox('Sem registros para excluir.', 'Atenção', mb_ok+MB_ICONINFORMATION);
+  end
+  else begin
+    desc := dtmPrincipal.qryPrincipal.fieldbyname('nm_descricao').value;
+    if Application.MessageBox(Pchar('Deseja excluir o registro selecionado?'
+    + slinebreak + desc), 'Atenção', mb_yesno+mb_iconexclamation) = mrYes then begin
+      dtmPrincipal.qryPrincipal.Delete;
+    end;
+  end;
 end;
 
 procedure TfrmPrincipal.btnVendaClick(Sender: TObject);

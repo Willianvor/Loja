@@ -93,7 +93,7 @@ object frmPrincipal: TfrmPrincipal
           Expanded = False
           FieldName = 'vlr_desconto_usuario'
           Title.Caption = 'DESCONTO'
-          Width = 64
+          Width = 72
           Visible = True
         end
         item
@@ -389,8 +389,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 59
     Align = alBottom
     TabOrder = 3
-    ExplicitLeft = -1
-    ExplicitTop = 517
     object btnVenda: TButton
       Left = 8
       Top = 6
@@ -417,6 +415,14 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'EXCLUIR'
       TabOrder = 2
       OnClick = btnExcluirClick
+    end
+    object btnOS: TButton
+      Left = 251
+      Top = 6
+      Width = 75
+      Height = 25
+      Caption = 'OS'
+      TabOrder = 3
     end
   end
   object menuPrincipal: TMainMenu

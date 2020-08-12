@@ -1,7 +1,7 @@
 object dtmPrincipal: TdtmPrincipal
   OldCreateOrder = False
   Height = 245
-  Width = 215
+  Width = 510
   object conPrincipal: TFDConnection
     Params.Strings = (
       
@@ -20,8 +20,8 @@ object dtmPrincipal: TdtmPrincipal
     SQL.Strings = (
       'select * from tb_vendas inner join tb_usuario'
       'ON tb_usuario.id_usuario = tb_vendas.fk_nm_usuario')
-    Left = 24
-    Top = 54
+    Left = 88
+    Top = 6
     object qryPrincipalid_venda: TFDAutoIncField
       FieldName = 'id_venda'
       Origin = 'id_venda'
@@ -91,19 +91,31 @@ object dtmPrincipal: TdtmPrincipal
   end
   object dtsPrincipal: TDataSource
     DataSet = qryPrincipal
-    Left = 24
-    Top = 102
+    Left = 88
+    Top = 54
   end
   object qryUsuario: TFDQuery
     Connection = conPrincipal
     SQL.Strings = (
       'select * from tb_usuario')
-    Left = 88
-    Top = 56
+    Left = 152
+    Top = 8
   end
   object dtsUsuario: TDataSource
     DataSet = qryUsuario
-    Left = 88
-    Top = 102
+    Left = 152
+    Top = 54
+  end
+  object qryConf: TFDQuery
+    Connection = conPrincipal
+    SQL.Strings = (
+      'select * from tb_conf')
+    Left = 216
+    Top = 8
+  end
+  object dtsConf: TDataSource
+    DataSet = qryConf
+    Left = 216
+    Top = 54
   end
 end
