@@ -5,7 +5,8 @@ uses
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   uDTM in 'uDTM.pas' {dtmPrincipal: TDataModule},
   BancoDados in 'Menu\Arquivo\BancoDados.pas' {frmBancoDados},
-  uVenda in 'uVenda.pas' {frmVenda};
+  uVenda in 'uVenda.pas' {frmVenda},
+  uOS in 'uOS.pas' {frmOS};
 
 {$R *.res}
 
@@ -15,5 +16,6 @@ begin
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TdtmPrincipal, dtmPrincipal);
   Application.CreateForm(TfrmBancoDados, frmBancoDados);
+  Application.CreateForm(TfrmOS, frmOS);
   Application.Run;
 end.

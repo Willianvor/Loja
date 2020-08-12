@@ -1,9 +1,9 @@
-object frmMaisOS: TfrmMaisOS
+object frmOS: TfrmOS
   Left = 0
   Top = 0
-  Caption = 'Nova OS'
-  ClientHeight = 108
-  ClientWidth = 259
+  Caption = 'OS'
+  ClientHeight = 125
+  ClientWidth = 183
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,52 +11,55 @@ object frmMaisOS: TfrmMaisOS
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 13
   object lblNrOS: TLabel
-    Left = 20
-    Top = 27
+    Left = 31
+    Top = 25
     Width = 77
-    Height = 21
+    Height = 13
     Caption = 'N'#218'MERO DA OS'
   end
   object pnlComandos: TPanel
     Left = 0
-    Top = 67
-    Width = 259
+    Top = 84
+    Width = 183
     Height = 41
     Align = alBottom
-    TabOrder = 0
-    ExplicitLeft = 160
-    ExplicitTop = 120
+    TabOrder = 1
+    ExplicitLeft = 264
+    ExplicitTop = 96
     ExplicitWidth = 185
     DesignSize = (
-      259
+      183
       41)
     object btnSalvar: TButton
       Left = 8
       Top = 8
       Width = 75
-      Height = 25
+      Height = 23
       Caption = 'SALVAR'
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
-      Left = 176
+      Left = 96
       Top = 8
       Width = 75
-      Height = 25
+      Height = 23
       Anchors = [akRight, akBottom]
       Caption = 'CANCELAR'
       TabOrder = 1
+      OnClick = btnCancelarClick
       ExplicitLeft = 360
     end
   end
-  object DBEdit1: TDBEdit
-    Left = 103
-    Top = 24
+  object edtNrOS: TEdit
+    Left = 31
+    Top = 44
     Width = 121
     Height = 21
-    TabOrder = 1
+    TabOrder = 0
   end
 end

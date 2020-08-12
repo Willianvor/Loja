@@ -30,7 +30,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 14
       Caption = 'DATA:'
     end
-    object DateTimePicker1: TDateTimePicker
+    object dtpPrincipal: TDateTimePicker
       Left = 51
       Top = 9
       Width = 110
@@ -80,7 +80,7 @@ object frmPrincipal: TfrmPrincipal
           Expanded = False
           FieldName = 'nm_descricao'
           Title.Caption = 'DESCRI'#199#195'O'
-          Width = 342
+          Width = 310
           Visible = True
         end
         item
@@ -135,7 +135,7 @@ object frmPrincipal: TfrmPrincipal
           Expanded = False
           FieldName = 'vlr_nao_faturar'
           Title.Caption = 'N'#195'O FATURAR'
-          Width = 64
+          Width = 89
           Visible = True
         end>
     end
@@ -389,6 +389,8 @@ object frmPrincipal: TfrmPrincipal
     Height = 59
     Align = alBottom
     TabOrder = 3
+    ExplicitLeft = 1
+    ExplicitTop = 517
     object btnVenda: TButton
       Left = 8
       Top = 6
@@ -418,11 +420,12 @@ object frmPrincipal: TfrmPrincipal
     end
     object btnOS: TButton
       Left = 251
-      Top = 6
+      Top = 5
       Width = 75
       Height = 25
       Caption = 'OS'
       TabOrder = 3
+      OnClick = btnOSClick
     end
   end
   object menuPrincipal: TMainMenu
