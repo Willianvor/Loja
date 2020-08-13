@@ -2,11 +2,12 @@ program LojaV3;
 
 uses
   Vcl.Forms,
-  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uPrincipalOld in 'uPrincipalOld.pas' {frmPrincipalOld},
   uDTM in 'uDTM.pas' {dtmPrincipal: TDataModule},
   BancoDados in 'Menu\Arquivo\BancoDados.pas' {frmBancoDados},
   uVenda in 'uVenda.pas' {frmVenda},
-  uOS in 'uOS.pas' {frmOS};
+  uOS in 'uOS.pas' {frmOS},
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal};
 
 {$R *.res}
 

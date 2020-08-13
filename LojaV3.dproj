@@ -92,8 +92,8 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uPrincipal.pas">
-            <Form>frmPrincipal</Form>
+        <DCCReference Include="uPrincipalOld.pas">
+            <Form>frmPrincipalOld</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uDTM.pas">
@@ -111,6 +111,10 @@
         </DCCReference>
         <DCCReference Include="uOS.pas">
             <Form>frmOS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uPrincipal.pas">
+            <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
