@@ -504,6 +504,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 52
     Align = alTop
     TabOrder = 2
+    ExplicitTop = 59
     object Panel1: TPanel
       Left = 521
       Top = 1

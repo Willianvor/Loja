@@ -58,6 +58,11 @@ implementation
 
 {$R *.dfm}
 
+//mostra os registros no grid por data
+procedure GridPorData();
+begin
+
+end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 var
@@ -76,6 +81,7 @@ begin
   except
     Application.MessageBox('Banco de dados não encontrado.', 'Erro', mb_ok + MB_ICONERROR );
   end;
+  dtpPrincipal.Date := Now;
 end;
 
 procedure TfrmPrincipal.sbtAlterarClick(Sender: TObject);
