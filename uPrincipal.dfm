@@ -22,6 +22,13 @@ object frmPrincipal: TfrmPrincipal
     Height = 57
     Align = alTop
     TabOrder = 0
+    object SpeedButton1: TSpeedButton
+      Left = 216
+      Top = 16
+      Width = 23
+      Height = 22
+      OnClick = SpeedButton1Click
+    end
     object gpbData: TGroupBox
       Left = 5
       Top = 4
@@ -322,12 +329,6 @@ object frmPrincipal: TfrmPrincipal
       item
         Expanded = False
         FieldName = 'vlr_nao_faturar'
-        Width = 64
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'id_usuario'
         Width = 64
         Visible = True
       end>

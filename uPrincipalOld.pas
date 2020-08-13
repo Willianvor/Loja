@@ -58,7 +58,6 @@ type
   private
     { Private declarations }
   public
-    procedure CarregaDescricao(combo: TDBComboBox; campo, tabela : string);
     { Public declarations }
   end;
 
@@ -72,29 +71,6 @@ implementation
 uses BancoDados;
 
 
-
-procedure TfrmPrincipalOld.CarregaDescricao(combo : TDBComboBox; campo, tabela : string);
-var
-  qryItems : TFDQuery;
-begin
-  qryItems := TFDQuery.Create(nil);
-  qryItems.Connection := dtmPrincipal.conPrincipal;
-  try
-    with qryItems do begin
-      Close;
-      SQL.Clear;
-      SQL.Add('select ' + campo + ' from ' + tabela);
-      Open();
-    end;
-
-    while not qryItems.Eof do begin
-      combo.Items.Add(qryItems.Fields[0].AsString);
-      qryItems.Next;
-    end;
-  finally
-    qryItems.Free;
-  end;
-end;
 
 procedure TfrmPrincipalOld.BancodeDadosRede1Click(Sender: TObject);
 begin

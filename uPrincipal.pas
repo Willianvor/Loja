@@ -3,9 +3,10 @@ unit uPrincipal;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Buttons, BancoDados, uDTM, uVenda;
+    System.Classes, Vcl.Graphics, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBGrids, Vcl.ExtCtrls,
+    Vcl.ComCtrls, System.Variants, uDTM, uVenda, Data.DB, Vcl.Grids, Vcl.Buttons,
+    System.SysUtils, Vcl.Forms, Winapi.Windows, Winapi.Messages, uOS, uAtalhos, BancoDados,
+    Vcl.Controls;
 
 type
   TfrmPrincipal = class(TForm)
@@ -37,11 +38,13 @@ type
     sbtOs: TSpeedButton;
     gpbData: TGroupBox;
     dtpPrincipal: TDateTimePicker;
+    SpeedButton1: TSpeedButton;
     procedure sbtNovaVendaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
     procedure sbtAlterarClick(Sender: TObject);
     procedure sbtOsClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,7 +58,6 @@ implementation
 
 {$R *.dfm}
 
-uses uOS, uAtalhos;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 var
@@ -72,7 +74,7 @@ begin
       qryUsuario.Active   := True;
     end;
   except
-    Application.MessageBox('Banco de dados não encontrado.', 'Erro', mb_ok+MB_ICONERROR );
+    Application.MessageBox('Banco de dados não encontrado.', 'Erro', mb_ok + MB_ICONERROR );
   end;
 end;
 
@@ -139,6 +141,16 @@ begin
     end;
   finally
     frmOS.FreeOnRelease;
+  end;
+end;
+
+procedure TfrmPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+  try
+    Application.CreateForm(TfrmBancoDados, frmBancoDados);
+    frmBancoDados.ShowModal;
+  finally
+    frmBancoDados.FreeOnRelease;
   end;
 end;
 

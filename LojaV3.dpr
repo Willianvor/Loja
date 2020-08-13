@@ -2,7 +2,6 @@ program LojaV3;
 
 uses
   Vcl.Forms,
-  uPrincipalOld in 'uPrincipalOld.pas' {frmPrincipalOld},
   uDTM in 'uDTM.pas' {dtmPrincipal: TDataModule},
   BancoDados in 'Menu\Arquivo\BancoDados.pas' {frmBancoDados},
   uVenda in 'uVenda.pas' {frmVenda},
