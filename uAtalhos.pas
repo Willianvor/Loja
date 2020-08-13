@@ -1,6 +1,5 @@
 unit uAtalhos;
 
-
 interface
 
   uses FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
