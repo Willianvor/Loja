@@ -12,6 +12,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object pnlData: TPanel
@@ -28,7 +29,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 49
       Caption = 'DATA'
       TabOrder = 0
-      object DateTimePicker1: TDateTimePicker
+      object dtpPrincipal: TDateTimePicker
         Left = 11
         Top = 18
         Width = 93
@@ -62,6 +63,7 @@ object frmPrincipal: TfrmPrincipal
       Width = 48
       Height = 48
       Caption = 'A'
+      OnClick = sbtAlterarClick
     end
     object sbtExcluir: TSpeedButton
       Left = 114
@@ -69,6 +71,7 @@ object frmPrincipal: TfrmPrincipal
       Width = 48
       Height = 48
       Caption = 'E'
+      OnClick = sbtExcluirClick
     end
     object sbtOs: TSpeedButton
       Left = 168
@@ -76,6 +79,7 @@ object frmPrincipal: TfrmPrincipal
       Width = 48
       Height = 48
       Caption = 'OS'
+      OnClick = sbtOsClick
     end
   end
   object pnlInfo: TPanel
@@ -85,7 +89,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 52
     Align = alTop
     TabOrder = 2
-    ExplicitTop = 41
     object Panel1: TPanel
       Left = 521
       Top = 1
@@ -93,7 +96,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 50
       Align = alLeft
       TabOrder = 0
-      ExplicitLeft = 137
       object pnlCaixaVLR: TPanel
         Left = 1
         Top = 26
@@ -102,8 +104,6 @@ object frmPrincipal: TfrmPrincipal
         Align = alTop
         Caption = 'R$ 0,00'
         TabOrder = 0
-        ExplicitTop = 1
-        ExplicitWidth = 134
       end
       object pnlDinheiro: TPanel
         Left = 1
@@ -113,9 +113,6 @@ object frmPrincipal: TfrmPrincipal
         Align = alTop
         Caption = 'DINHEIRO'
         TabOrder = 1
-        ExplicitLeft = 2
-        ExplicitTop = 9
-        ExplicitWidth = 134
       end
     end
     object Panel2: TPanel
@@ -125,8 +122,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 50
       Align = alLeft
       TabOrder = 1
-      ExplicitLeft = 9
-      ExplicitTop = 2
       object Panel3: TPanel
         Left = 1
         Top = 26
@@ -153,7 +148,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 50
       Align = alLeft
       TabOrder = 2
-      ExplicitLeft = 137
       object Panel6: TPanel
         Left = 1
         Top = 26
@@ -180,7 +174,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 50
       Align = alLeft
       TabOrder = 3
-      ExplicitLeft = 137
       object Panel9: TPanel
         Left = 1
         Top = 26
@@ -207,7 +200,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 50
       Align = alLeft
       TabOrder = 4
-      ExplicitLeft = 137
       object Panel12: TPanel
         Left = 1
         Top = 26
@@ -294,41 +286,49 @@ object frmPrincipal: TfrmPrincipal
       item
         Expanded = False
         FieldName = 'vlr_desconto_usuario'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_dinheiro'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_cartao'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_custo'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_lucro'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_debito'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_nao_faturar'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'id_usuario'
+        Width = 64
         Visible = True
       end>
   end

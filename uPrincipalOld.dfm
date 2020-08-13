@@ -13,7 +13,6 @@ object frmPrincipalOld: TfrmPrincipalOld
   Menu = menuPrincipal
   OldCreateOrder = False
   Position = poMainFormCenter
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object pnlData: TPanel
@@ -47,8 +46,6 @@ object frmPrincipalOld: TfrmPrincipalOld
     Height = 390
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 51
-    ExplicitTop = 173
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
@@ -102,35 +99,30 @@ object frmPrincipalOld: TfrmPrincipalOld
           Expanded = False
           FieldName = 'vlr_dinheiro'
           Title.Caption = 'DINHEIRO'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'vlr_cartao'
           Title.Caption = 'CART'#195'O'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'vlr_custo'
           Title.Caption = 'CUSTO'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'vlr_lucro'
           Title.Caption = 'LUCRO'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'vlr_debito'
           Title.Caption = 'D'#201'BITO'
-          Width = 64
           Visible = True
         end
         item
@@ -398,7 +390,6 @@ object frmPrincipalOld: TfrmPrincipalOld
       Height = 25
       Caption = 'VENDA'
       TabOrder = 0
-      OnClick = btnVendaClick
     end
     object btnAlterar: TButton
       Left = 89
@@ -407,7 +398,6 @@ object frmPrincipalOld: TfrmPrincipalOld
       Height = 25
       Caption = 'ALTERAR'
       TabOrder = 1
-      OnClick = btnAlterarClick
     end
     object btnExcluir: TButton
       Left = 170
@@ -416,7 +406,6 @@ object frmPrincipalOld: TfrmPrincipalOld
       Height = 25
       Caption = 'EXCLUIR'
       TabOrder = 2
-      OnClick = btnExcluirClick
     end
     object btnOS: TButton
       Left = 251
@@ -425,7 +414,6 @@ object frmPrincipalOld: TfrmPrincipalOld
       Height = 25
       Caption = 'OS'
       TabOrder = 3
-      OnClick = btnOSClick
     end
   end
   object menuPrincipal: TMainMenu

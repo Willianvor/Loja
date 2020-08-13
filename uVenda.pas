@@ -59,7 +59,7 @@ implementation
 
 {$R *.dfm}
 
-uses uPrincipalOld;
+uses uPrincipalOld, uAtalhos;
 
 procedure TfrmVenda.CalculaLucro();
 begin
@@ -108,7 +108,7 @@ procedure TfrmVenda.FormActivate(Sender: TObject);
 begin
   dtmPrincipal.qryPrincipal.FieldByName('dt_data').Value := dtpDataVenda.Date;
   dtmPrincipal.qryPrincipal.FieldByName('fk_nm_usuario').Value := 1;
-  frmPrincipalOld.CarregaDescricao(dbcDescricao, 'nm_descricao', 'tb_vendas');
+  CarregaDescricao(dtmPrincipal.conPrincipal, dbcDescricao, 'nm_descricao', 'tb_vendas');
 end;
 
 procedure TfrmVenda.FormShow(Sender: TObject);
