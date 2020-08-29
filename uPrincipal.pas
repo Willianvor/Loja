@@ -45,6 +45,8 @@ type
     procedure sbtAlterarClick(Sender: TObject);
     procedure sbtOsClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure dtpPrincipalChange(Sender: TObject);
+    procedure dtpPrincipalCloseUp(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,9 +61,28 @@ implementation
 {$R *.dfm}
 
 //mostra os registros no grid por data
-procedure GridPorData();
+procedure GridPorData(dtp: TDateTimePicker);
 begin
+  with dtmPrincipal.qryPrincipal do begin
+    Close;
+    SQL.Clear;
+    SQL.Add('select * from tb_vendas');
+    SQL.Add('inner join tb_usuario');
+    SQL.Add('ON tb_usuario.id_usuario = tb_vendas.fk_nm_usuario');
+    SQL.Add('where tb_vendas.dt_data = CDate(:data)');
+    ParamByName('data').Value := FormatDateTime('yyyy-mm-dd', dtp.Date); //.value também, funciona sem o formatdatetime
+    Open();
+  end;
+end;
 
+procedure TfrmPrincipal.dtpPrincipalChange(Sender: TObject);
+begin
+  GridPorData(dtpPrincipal);
+end;
+
+procedure TfrmPrincipal.dtpPrincipalCloseUp(Sender: TObject);
+begin
+  GridPorData(dtpPrincipal);
 end;
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -77,6 +98,8 @@ begin
       conPrincipal.Connected := True;
       qryPrincipal.Active := True;
       qryUsuario.Active   := True;
+      //mostra grid por data
+      GridPorData(dtpPrincipal);
     end;
   except
     Application.MessageBox('Banco de dados não encontrado.', 'Erro', mb_ok + MB_ICONERROR );

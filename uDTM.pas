@@ -33,6 +33,21 @@ type
     qryPrincipalnm_usuario: TWideStringField;
     qryConf: TFDQuery;
     dtsConf: TDataSource;
+    FDQuery1: TFDQuery;
+    FDAutoIncField1: TFDAutoIncField;
+    SQLTimeStampField1: TSQLTimeStampField;
+    IntegerField1: TIntegerField;
+    WideStringField1: TWideStringField;
+    CurrencyField1: TCurrencyField;
+    CurrencyField2: TCurrencyField;
+    CurrencyField3: TCurrencyField;
+    CurrencyField4: TCurrencyField;
+    CurrencyField5: TCurrencyField;
+    CurrencyField6: TCurrencyField;
+    CurrencyField7: TCurrencyField;
+    CurrencyField8: TCurrencyField;
+    IntegerField2: TIntegerField;
+    WideStringField2: TWideStringField;
   private
     { Private declarations }
   public

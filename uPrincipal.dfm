@@ -44,6 +44,8 @@ object frmPrincipal: TfrmPrincipal
         Date = 44055.000000000000000000
         Time = 0.872512037036358400
         TabOrder = 0
+        OnCloseUp = dtpPrincipalCloseUp
+        OnChange = dtpPrincipalChange
       end
     end
   end
@@ -504,7 +506,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 52
     Align = alTop
     TabOrder = 2
-    ExplicitTop = 59
     object Panel1: TPanel
       Left = 521
       Top = 1
@@ -669,6 +670,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 419
     Align = alClient
     DataSource = dtmPrincipal.dtsPrincipal
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -702,43 +704,36 @@ object frmPrincipal: TfrmPrincipal
       item
         Expanded = False
         FieldName = 'vlr_desconto_usuario'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_dinheiro'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_cartao'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_custo'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_lucro'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_debito'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_nao_faturar'
-        Width = 64
         Visible = True
       end>
   end
