@@ -506,7 +506,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 46
     Align = alTop
     TabOrder = 2
-    ExplicitTop = 59
     object Panel1: TPanel
       Left = 673
       Top = 1
@@ -514,8 +513,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 0
-      ExplicitLeft = 487
-      ExplicitTop = -4
       object labelas: TLabel
         Left = 1
         Top = 1
@@ -537,7 +534,6 @@ object frmPrincipal: TfrmPrincipal
         Align = alBottom
         Caption = 'R$ 10000,00'
         TabOrder = 0
-        ExplicitTop = 17
       end
     end
     object Panel2: TPanel
@@ -547,8 +543,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 1
-      ExplicitLeft = 9
-      ExplicitTop = 2
       object Label1: TLabel
         Left = 1
         Top = 1
@@ -579,8 +573,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 2
-      ExplicitLeft = 9
-      ExplicitTop = 2
       object Label2: TLabel
         Left = 1
         Top = 1
@@ -611,8 +603,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 3
-      ExplicitLeft = 9
-      ExplicitTop = 2
       object Label3: TLabel
         Left = 1
         Top = 1
@@ -643,7 +633,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 4
-      ExplicitLeft = 1
       object Label5: TLabel
         Left = 1
         Top = 1
@@ -674,7 +663,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 5
-      ExplicitLeft = 1
       object Label9: TLabel
         Left = 1
         Top = 1
@@ -705,7 +693,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 6
-      ExplicitLeft = 1
       object Label10: TLabel
         Left = 1
         Top = 1
@@ -736,7 +723,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 7
-      ExplicitLeft = 1
       object Label11: TLabel
         Left = 1
         Top = 1
@@ -767,7 +753,6 @@ object frmPrincipal: TfrmPrincipal
         Align = alRight
         Caption = '+'
         TabOrder = 1
-        ExplicitLeft = 80
       end
     end
     object Panel9: TPanel
@@ -777,8 +762,6 @@ object frmPrincipal: TfrmPrincipal
       Height = 44
       Align = alLeft
       TabOrder = 8
-      ExplicitLeft = -4
-      ExplicitTop = -4
       object Label4: TLabel
         Left = 1
         Top = 1
@@ -800,8 +783,6 @@ object frmPrincipal: TfrmPrincipal
         Align = alBottom
         Caption = 'R$ 10000,00'
         TabOrder = 0
-        ExplicitLeft = -3
-        ExplicitTop = 14
       end
     end
   end

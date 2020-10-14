@@ -71,6 +71,8 @@ implementation
 
 {$R *.dfm}
 
+{TODO:}
+
 //mostra os registros no grid por data
 procedure TfrmPrincipal.GridPorData(dtp: TDateTimePicker);
 begin
