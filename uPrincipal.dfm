@@ -503,171 +503,313 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 57
     Width = 1184
-    Height = 52
+    Height = 46
     Align = alTop
     TabOrder = 2
+    ExplicitTop = 59
     object Panel1: TPanel
-      Left = 521
+      Left = 673
       Top = 1
       Width = 96
-      Height = 50
+      Height = 44
       Align = alLeft
       TabOrder = 0
-      object pnlCaixaVLR: TPanel
-        Left = 1
-        Top = 26
-        Width = 94
-        Height = 25
-        Align = alTop
-        Caption = 'R$ 0,00'
-        TabOrder = 0
-      end
-      object pnlDinheiro: TPanel
+      ExplicitLeft = 487
+      ExplicitTop = -4
+      object labelas: TLabel
         Left = 1
         Top = 1
         Width = 94
-        Height = 25
-        Align = alTop
-        Caption = 'DINHEIRO'
-        TabOrder = 1
-      end
-    end
-    object Panel2: TPanel
-      Left = 1
-      Top = 1
-      Width = 136
-      Height = 50
-      Align = alLeft
-      TabOrder = 1
-      object Panel3: TPanel
-        Left = 1
-        Top = 26
-        Width = 134
-        Height = 25
-        Align = alTop
-        Caption = 'R$ 0,00'
-        TabOrder = 0
+        Height = 17
+        Align = alClient
+        Caption = 'SERVI'#199'O'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 49
+        ExplicitHeight = 14
       end
       object Panel4: TPanel
         Left = 1
-        Top = 1
-        Width = 134
+        Top = 18
+        Width = 94
         Height = 25
-        Align = alTop
-        Caption = 'CAIXA'
-        TabOrder = 1
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
+        ExplicitTop = 17
+      end
+    end
+    object Panel2: TPanel
+      Left = 289
+      Top = 1
+      Width = 96
+      Height = 44
+      Align = alLeft
+      TabOrder = 1
+      ExplicitLeft = 9
+      ExplicitTop = 2
+      object Label1: TLabel
+        Left = 1
+        Top = 1
+        Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'CART'#195'O'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 47
+        ExplicitHeight = 14
+      end
+      object Panel3: TPanel
+        Left = 1
+        Top = 18
+        Width = 94
+        Height = 25
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
       end
     end
     object Panel5: TPanel
-      Left = 425
+      Left = 193
       Top = 1
       Width = 96
-      Height = 50
+      Height = 44
       Align = alLeft
       TabOrder = 2
+      ExplicitLeft = 9
+      ExplicitTop = 2
+      object Label2: TLabel
+        Left = 1
+        Top = 1
+        Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'DINHEIRO'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 55
+        ExplicitHeight = 14
+      end
       object Panel6: TPanel
         Left = 1
-        Top = 26
+        Top = 18
         Width = 94
         Height = 25
-        Align = alTop
-        Caption = 'R$ 0,00'
+        Align = alBottom
+        Caption = 'R$ 10000,00'
         TabOrder = 0
-      end
-      object Panel7: TPanel
-        Left = 1
-        Top = 1
-        Width = 94
-        Height = 25
-        Align = alTop
-        Caption = 'DINHEIRO'
-        TabOrder = 1
       end
     end
-    object Panel8: TPanel
-      Left = 329
+    object Panel7: TPanel
+      Left = 97
       Top = 1
       Width = 96
-      Height = 50
+      Height = 44
       Align = alLeft
       TabOrder = 3
-      object Panel9: TPanel
-        Left = 1
-        Top = 26
-        Width = 94
-        Height = 25
-        Align = alTop
-        Caption = 'R$ 0,00'
-        TabOrder = 0
-      end
-      object Panel10: TPanel
+      ExplicitLeft = 9
+      ExplicitTop = 2
+      object Label3: TLabel
         Left = 1
         Top = 1
         Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'CAIXA'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 34
+        ExplicitHeight = 14
+      end
+      object Panel8: TPanel
+        Left = 1
+        Top = 18
+        Width = 94
         Height = 25
-        Align = alTop
-        Caption = 'DINHEIRO'
-        TabOrder = 1
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
       end
     end
     object Panel11: TPanel
-      Left = 233
+      Left = 769
       Top = 1
       Width = 96
-      Height = 50
+      Height = 44
       Align = alLeft
       TabOrder = 4
+      ExplicitLeft = 1
+      object Label5: TLabel
+        Left = 1
+        Top = 1
+        Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'DESPESAS'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 58
+        ExplicitHeight = 14
+      end
       object Panel12: TPanel
         Left = 1
-        Top = 26
+        Top = 18
         Width = 94
         Height = 25
-        Align = alTop
-        Caption = 'R$ 0,00'
+        Align = alBottom
+        Caption = 'R$ 10000,00'
         TabOrder = 0
-      end
-      object Panel13: TPanel
-        Left = 1
-        Top = 1
-        Width = 94
-        Height = 25
-        Align = alTop
-        Caption = 'DINHEIRO'
-        TabOrder = 1
       end
     end
-    object Panel14: TPanel
-      Left = 137
+    object Panel19: TPanel
+      Left = 577
       Top = 1
       Width = 96
-      Height = 50
+      Height = 44
       Align = alLeft
       TabOrder = 5
-      object Panel15: TPanel
-        Left = 1
-        Top = 26
-        Width = 94
-        Height = 25
-        Align = alTop
-        Caption = 'R$ 0,00'
-        TabOrder = 0
-      end
-      object Panel16: TPanel
+      ExplicitLeft = 1
+      object Label9: TLabel
         Left = 1
         Top = 1
         Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'N'#195'O FATURADO'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 91
+        ExplicitHeight = 14
+      end
+      object Panel20: TPanel
+        Left = 1
+        Top = 18
+        Width = 94
         Height = 25
-        Align = alTop
-        Caption = 'DINHEIRO'
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
+      end
+    end
+    object Panel21: TPanel
+      Left = 481
+      Top = 1
+      Width = 96
+      Height = 44
+      Align = alLeft
+      TabOrder = 6
+      ExplicitLeft = 1
+      object Label10: TLabel
+        Left = 1
+        Top = 1
+        Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'FATURADO'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 62
+        ExplicitHeight = 14
+      end
+      object Panel22: TPanel
+        Left = 1
+        Top = 18
+        Width = 94
+        Height = 25
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
+      end
+    end
+    object Panel23: TPanel
+      Left = 385
+      Top = 1
+      Width = 96
+      Height = 44
+      Align = alLeft
+      TabOrder = 7
+      ExplicitLeft = 1
+      object Label11: TLabel
+        Left = 1
+        Top = 1
+        Width = 77
+        Height = 17
+        Align = alClient
+        Caption = 'LUCRO'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 37
+        ExplicitHeight = 14
+      end
+      object Panel24: TPanel
+        Left = 1
+        Top = 18
+        Width = 94
+        Height = 25
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
+      end
+      object Button1: TButton
+        Left = 78
+        Top = 1
+        Width = 17
+        Height = 17
+        Align = alRight
+        Caption = '+'
         TabOrder = 1
+        ExplicitLeft = 80
+      end
+    end
+    object Panel9: TPanel
+      Left = 1
+      Top = 1
+      Width = 96
+      Height = 44
+      Align = alLeft
+      TabOrder = 8
+      ExplicitLeft = -4
+      ExplicitTop = -4
+      object Label4: TLabel
+        Left = 1
+        Top = 1
+        Width = 94
+        Height = 17
+        Align = alClient
+        Caption = 'DESPESAS'
+        Color = clCream
+        ParentColor = False
+        Transparent = False
+        ExplicitWidth = 58
+        ExplicitHeight = 14
+      end
+      object Panel10: TPanel
+        Left = 1
+        Top = 18
+        Width = 94
+        Height = 25
+        Align = alBottom
+        Caption = 'R$ 10000,00'
+        TabOrder = 0
+        ExplicitLeft = -3
+        ExplicitTop = 14
       end
     end
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 109
+    Top = 103
     Width = 1184
-    Height = 419
+    Height = 425
     Align = alClient
     DataSource = dtmPrincipal.dtsPrincipal
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
