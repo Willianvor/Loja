@@ -59,7 +59,7 @@ implementation
 
 {$R *.dfm}
 
-uses uPrincipalOld, uAtalhos;
+uses uPrincipalOld, uAtalhos, uPrincipal;
 
 procedure TfrmVenda.CalculaLucro();
 begin
@@ -113,7 +113,7 @@ end;
 
 procedure TfrmVenda.FormShow(Sender: TObject);
 begin
-  dtpDataVenda.Date := Now;
+  dtpDataVenda.Date := frmPrincipal.dtpPrincipal.Date;
 end;
 
 end.

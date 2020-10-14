@@ -50,6 +50,7 @@ type
   private
     { Private declarations }
   public
+    procedure GridPorData(dtp: TDateTimePicker);
     { Public declarations }
   end;
 
@@ -61,7 +62,7 @@ implementation
 {$R *.dfm}
 
 //mostra os registros no grid por data
-procedure GridPorData(dtp: TDateTimePicker);
+procedure TfrmPrincipal.GridPorData(dtp: TDateTimePicker);
 begin
   with dtmPrincipal.qryPrincipal do begin
     Close;

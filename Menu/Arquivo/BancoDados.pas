@@ -31,6 +31,8 @@ implementation
 
 {$R *.dfm}
 
+uses uPrincipal;
+
 procedure TfrmBancoDados.btnLocalizarClick(Sender: TObject);
 begin
   if OpenTextFileDialog1.Execute then
@@ -54,6 +56,7 @@ begin
       conPrincipal.Connected := True;
       qryPrincipal.Active := True;
       qryUsuario.Active   := True;
+      frmPrincipal.GridPorData(frmPrincipal.dtpPrincipal);
     end;
   finally
     ModalResult := mrOk;
