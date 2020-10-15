@@ -6,7 +6,9 @@ uses
     System.Classes, Vcl.Graphics, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBGrids, Vcl.ExtCtrls,
     Vcl.ComCtrls, System.Variants, uDTM, uVenda, Data.DB, Vcl.Grids, Vcl.Buttons,
     System.SysUtils, Vcl.Forms, Winapi.Windows, Winapi.Messages, uOS, uAtalhos, BancoDados,
-    Vcl.Controls;
+    Vcl.Controls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmPrincipal = class(TForm)
@@ -58,9 +60,14 @@ type
     procedure dtpPrincipalChange(Sender: TObject);
     procedure dtpPrincipalCloseUp(Sender: TObject);
   private
+    procedure Calculos;
+    procedure VerificaRepetido;
     { Private declarations }
   public
     procedure GridPorData(dtp: TDateTimePicker);
+    function SeNulo(query: TFDQuery; campo: string): real;
+    procedure ValorRS(painel: TPanel; valor: Real);overload;
+    procedure ValorRS(painel: TPanel; str : string; valor: Real);overload;
     { Public declarations }
   end;
 
@@ -71,7 +78,101 @@ implementation
 
 {$R *.dfm}
 
-{TODO:}
+{TODO: arrumar a procedure VerificaRepetido()}
+
+//formata para os painel
+procedure TfrmPrincipal.ValorRS(painel: TPanel; valor: Real);
+begin
+  painel.Caption := 'R$ ' + FormatFloat('0.00', valor);
+end;
+
+procedure TfrmPrincipal.ValorRS(painel: TPanel; str : string; valor: Real);
+begin
+  painel.Caption := str + 'R$ ' + FormatFloat('0.00', valor);
+end;
+
+procedure TfrmPrincipal.Calculos();
+var
+  qryCalc, qryOntem : TFDQuery;
+  vlr_servico, dinheiroAnterior, debitoAnterior, sangriaAnterior, caixa : real;
+begin
+  try
+    with qryCalc do begin
+      Close;
+      SQL.Clear;
+      SQL.Add('select SUM(vlr_servico), SUM(vlr_dinheiro), sum(vlr_cartao), sum(vlr_custo)');
+      SQL.Add(', sum(vlr_lucro), sum(vlr_debito), sum(vlr_sangria) from tb_venda where dt_data=:data');
+      ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date);
+      Open();
+    end;
+
+    //previne de ser nulo o valor
+    vlr_servico := SeNulo(qryCalc, 'vlr_servico');
+
+    //Saldo anterior//
+    with qryOntem do begin
+      Close;
+      SQL.Clear;
+      SQL.Add('select sum(vlr_dinheiro), sum(vlr_debito), sum(vlr_sangria) from tb_venda');
+      SQL.Add('where dt_data between "2020-03-02" and :data');
+      ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date);
+      Open();
+    end;
+
+    dinheiroAnterior:= SeNulo(qryOntem, 'vlr_dinheiro');
+    debitoAnterior  := SeNulo(qryOntem, 'vlr_debito');
+    sangriaAnterior := SeNulo(qryOntem, 'vlr_sangria');
+    //--------------//
+
+    caixa := dinheiroAnterior - debitoAnterior - sangriaAnterior;
+
+    //formata o valor para o painel
+    ValorRS(labelas, vlr_servico);
+  finally
+    qryCalc.Free;
+    qryOntem.Free;
+  end;
+  //ComissaoSemanal;
+  VerificaRepetido();
+end;
+
+procedure TfrmPrincipal.VerificaRepetido();
+var
+  contador : SmallInt;
+  qryRepetido : TFDQuery;
+begin
+  qryRepetido := TFDQuery.Create(nil);
+  qryRepetido.Connection := dtmPrincipal.conPrincipal;
+  contador := 0;
+  try
+    with qryRepetido do begin
+      Close;
+      SQL.Clear;
+      SQL.Add('select * from REGISTROS where data=:data');
+      ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date); //.value também
+      Open();
+    end;
+    while not qryRepetido.Eof do begin
+      if qryRepetido.Fields[1].AsString = 'CONTADOR' then begin
+        inc(contador);
+        if contador > 1 then begin
+          ShowMessage('Há dois registros "CONTADOR" no mesmo dia.');
+        end;
+      end;
+      qryRepetido.Next;
+    end;
+  finally
+    qryRepetido.Free;
+  end;
+end;
+
+function TfrmPrincipal.SeNulo(query : TFDQuery; campo : string) : real;
+begin
+  if query['sum('+campo+')'] = null then
+    Result := 0
+  else
+    Result := query['sum('+campo+')'];
+end;
 
 //mostra os registros no grid por data
 procedure TfrmPrincipal.GridPorData(dtp: TDateTimePicker);

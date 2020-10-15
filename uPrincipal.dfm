@@ -827,43 +827,36 @@ object frmPrincipal: TfrmPrincipal
       item
         Expanded = False
         FieldName = 'vlr_desconto_usuario'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_dinheiro'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_cartao'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_custo'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_lucro'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_debito'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_nao_faturar'
-        Width = 64
         Visible = True
       end>
   end
