@@ -507,7 +507,7 @@ object frmPrincipal: TfrmPrincipal
     Align = alTop
     TabOrder = 2
     object Panel1: TPanel
-      Left = 673
+      Left = 481
       Top = 1
       Width = 96
       Height = 44
@@ -526,18 +526,18 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 49
         ExplicitHeight = 14
       end
-      object Panel4: TPanel
+      object pnlVlrServico: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
     end
     object Panel2: TPanel
-      Left = 289
+      Left = 193
       Top = 1
       Width = 96
       Height = 44
@@ -556,18 +556,18 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 47
         ExplicitHeight = 14
       end
-      object Panel3: TPanel
+      object pnlVlrCartao: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
     end
     object Panel5: TPanel
-      Left = 193
+      Left = 97
       Top = 1
       Width = 96
       Height = 44
@@ -586,18 +586,18 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 55
         ExplicitHeight = 14
       end
-      object Panel6: TPanel
+      object pnlVlrDinheiro: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
     end
     object Panel7: TPanel
-      Left = 97
+      Left = 1
       Top = 1
       Width = 96
       Height = 44
@@ -616,18 +616,18 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 34
         ExplicitHeight = 14
       end
-      object Panel8: TPanel
+      object pnlVlrCaixa: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
     end
     object Panel11: TPanel
-      Left = 769
+      Left = 577
       Top = 1
       Width = 96
       Height = 44
@@ -646,53 +646,23 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 58
         ExplicitHeight = 14
       end
-      object Panel12: TPanel
+      object pnlVlrDespesas: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
     end
-    object Panel19: TPanel
-      Left = 577
+    object Panel21: TPanel
+      Left = 385
       Top = 1
       Width = 96
       Height = 44
       Align = alLeft
       TabOrder = 5
-      object Label9: TLabel
-        Left = 1
-        Top = 1
-        Width = 94
-        Height = 17
-        Align = alClient
-        Caption = 'N'#195'O FATURADO'
-        Color = clCream
-        ParentColor = False
-        Transparent = False
-        ExplicitWidth = 91
-        ExplicitHeight = 14
-      end
-      object Panel20: TPanel
-        Left = 1
-        Top = 18
-        Width = 94
-        Height = 25
-        Align = alBottom
-        Caption = 'R$ 10000,00'
-        TabOrder = 0
-      end
-    end
-    object Panel21: TPanel
-      Left = 481
-      Top = 1
-      Width = 96
-      Height = 44
-      Align = alLeft
-      TabOrder = 6
       object Label10: TLabel
         Left = 1
         Top = 1
@@ -706,23 +676,23 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 62
         ExplicitHeight = 14
       end
-      object Panel22: TPanel
+      object pnlVlrFaturado: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
     end
     object Panel23: TPanel
-      Left = 385
+      Left = 289
       Top = 1
       Width = 96
       Height = 44
       Align = alLeft
-      TabOrder = 7
+      TabOrder = 6
       object Label11: TLabel
         Left = 1
         Top = 1
@@ -736,13 +706,13 @@ object frmPrincipal: TfrmPrincipal
         ExplicitWidth = 37
         ExplicitHeight = 14
       end
-      object Panel24: TPanel
+      object pnlVlrLucro: TPanel
         Left = 1
         Top = 18
         Width = 94
         Height = 25
         Align = alBottom
-        Caption = 'R$ 10000,00'
+        Caption = 'R$ 0,00'
         TabOrder = 0
       end
       object Button1: TButton
@@ -753,36 +723,6 @@ object frmPrincipal: TfrmPrincipal
         Align = alRight
         Caption = '+'
         TabOrder = 1
-      end
-    end
-    object Panel9: TPanel
-      Left = 1
-      Top = 1
-      Width = 96
-      Height = 44
-      Align = alLeft
-      TabOrder = 8
-      object Label4: TLabel
-        Left = 1
-        Top = 1
-        Width = 94
-        Height = 17
-        Align = alClient
-        Caption = 'DESPESAS'
-        Color = clCream
-        ParentColor = False
-        Transparent = False
-        ExplicitWidth = 58
-        ExplicitHeight = 14
-      end
-      object Panel10: TPanel
-        Left = 1
-        Top = 18
-        Width = 94
-        Height = 25
-        Align = alBottom
-        Caption = 'R$ 10000,00'
-        TabOrder = 0
       end
     end
   end
@@ -827,36 +767,43 @@ object frmPrincipal: TfrmPrincipal
       item
         Expanded = False
         FieldName = 'vlr_desconto_usuario'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_dinheiro'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_cartao'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_custo'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_lucro'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_debito'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_nao_faturar'
+        Width = 64
         Visible = True
       end>
   end

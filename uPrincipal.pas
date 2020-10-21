@@ -25,32 +25,26 @@ type
     SpeedButton1: TSpeedButton;
     Panel1: TPanel;
     labelas: TLabel;
-    Panel4: TPanel;
+    pnlVlrServico: TPanel;
     Panel2: TPanel;
     Label1: TLabel;
-    Panel3: TPanel;
+    pnlVlrCartao: TPanel;
     Panel5: TPanel;
     Label2: TLabel;
-    Panel6: TPanel;
+    pnlVlrDinheiro: TPanel;
     Panel7: TPanel;
     Label3: TLabel;
-    Panel8: TPanel;
+    pnlVlrCaixa: TPanel;
     Panel11: TPanel;
     Label5: TLabel;
-    Panel12: TPanel;
-    Panel19: TPanel;
-    Label9: TLabel;
-    Panel20: TPanel;
+    pnlVlrDespesas: TPanel;
     Panel21: TPanel;
     Label10: TLabel;
-    Panel22: TPanel;
+    pnlVlrFaturado: TPanel;
     Panel23: TPanel;
     Label11: TLabel;
-    Panel24: TPanel;
+    pnlVlrLucro: TPanel;
     Button1: TButton;
-    Panel9: TPanel;
-    Label4: TLabel;
-    Panel10: TPanel;
     procedure sbtNovaVendaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
@@ -61,7 +55,7 @@ type
     procedure dtpPrincipalCloseUp(Sender: TObject);
   private
     procedure Calculos;
-    procedure VerificaRepetido;
+    //procedure VerificaRepetido;
     { Private declarations }
   public
     procedure GridPorData(dtp: TDateTimePicker);
@@ -80,7 +74,7 @@ implementation
 
 {TODO: arrumar a procedure VerificaRepetido()}
 
-//formata para os painel
+//formata para os paineis
 procedure TfrmPrincipal.ValorRS(painel: TPanel; valor: Real);
 begin
   painel.Caption := 'R$ ' + FormatFloat('0.00', valor);
@@ -90,88 +84,79 @@ procedure TfrmPrincipal.ValorRS(painel: TPanel; str : string; valor: Real);
 begin
   painel.Caption := str + 'R$ ' + FormatFloat('0.00', valor);
 end;
+//----------------------
 
 procedure TfrmPrincipal.Calculos();
 var
   qryCalc, qryOntem : TFDQuery;
-  vlr_servico, dinheiroAnterior, debitoAnterior, sangriaAnterior, caixa : real;
+  vlr_dinheiro, vlr_cartao, vlr_lucro, vlr_servico, vlr_debito,
+  dinheiroAnterior, debitoAnterior, sangriaAnterior, caixa, faturado : real;
 begin
+  qryCalc := TFDQuery.Create(nil);
+  qryCalc.Connection := dtmPrincipal.conPrincipal;
+  qryOntem := TFDQuery.Create(nil);
+  qryOntem.Connection := dtmPrincipal.conPrincipal;
+
   try
     with qryCalc do begin
       Close;
       SQL.Clear;
-      SQL.Add('select SUM(vlr_servico), SUM(vlr_dinheiro), sum(vlr_cartao), sum(vlr_custo)');
-      SQL.Add(', sum(vlr_lucro), sum(vlr_debito), sum(vlr_sangria) from tb_venda where dt_data=:data');
+      SQL.Add('select SUM(vlr_dinheiro) as DINHEIRO, sum(vlr_cartao) as CARTAO,');
+      SQL.Add('sum(vlr_lucro) as LUCRO, sum(vlr_servico) as SERVICO,');
+      SQL.Add('sum(vlr_debito) as DEBITO from tb_vendas where dt_data=:data');
       ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date);
       Open();
     end;
 
     //previne de ser nulo o valor
-    vlr_servico := SeNulo(qryCalc, 'vlr_servico');
+    vlr_dinheiro := SeNulo(qryCalc, 'DINHEIRO');
+    vlr_cartao   := SeNulo(qryCalc, 'CARTAO');
+    vlr_lucro    := SeNulo(qryCalc, 'LUCRO');
+    vlr_servico  := SeNulo(qryCalc, 'SERVICO');
+    vlr_debito   := SeNulo(qryCalc, 'DEBITO');
+
+    faturado     := vlr_dinheiro + vlr_cartao;
 
     //Saldo anterior//
     with qryOntem do begin
       Close;
       SQL.Clear;
-      SQL.Add('select sum(vlr_dinheiro), sum(vlr_debito), sum(vlr_sangria) from tb_venda');
-      SQL.Add('where dt_data between "2020-03-02" and :data');
+      SQL.Add('select sum(vlr_dinheiro) as DINHEIRO, sum(vlr_debito) as DEBITO,');
+      SQL.Add('sum(vlr_sangria) as SANGRIA from tb_vendas');
+      SQL.Add('where dt_data between #2000-01-01# and :data');
       ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date);
       Open();
     end;
 
-    dinheiroAnterior:= SeNulo(qryOntem, 'vlr_dinheiro');
-    debitoAnterior  := SeNulo(qryOntem, 'vlr_debito');
-    sangriaAnterior := SeNulo(qryOntem, 'vlr_sangria');
+    dinheiroAnterior:= SeNulo(qryOntem, 'dinheiro');
+    debitoAnterior  := SeNulo(qryOntem, 'debito');
+    sangriaAnterior := SeNulo(qryOntem, 'sangria');
     //--------------//
 
     caixa := dinheiroAnterior - debitoAnterior - sangriaAnterior;
 
     //formata o valor para o painel
-    ValorRS(labelas, vlr_servico);
+    ValorRS(pnlVlrCaixa, caixa);
+    ValorRS(pnlVlrDinheiro, vlr_dinheiro);
+    ValorRS(pnlVlrCartao, vlr_cartao);
+    ValorRS(pnlVlrFaturado, faturado);
+    ValorRS(pnlVlrLucro, vlr_lucro);
+    ValorRS(pnlVlrServico, vlr_servico);
+    ValorRS(pnlVlrDespesas, vlr_debito);
   finally
     qryCalc.Free;
     qryOntem.Free;
   end;
   //ComissaoSemanal;
-  VerificaRepetido();
 end;
 
-procedure TfrmPrincipal.VerificaRepetido();
-var
-  contador : SmallInt;
-  qryRepetido : TFDQuery;
-begin
-  qryRepetido := TFDQuery.Create(nil);
-  qryRepetido.Connection := dtmPrincipal.conPrincipal;
-  contador := 0;
-  try
-    with qryRepetido do begin
-      Close;
-      SQL.Clear;
-      SQL.Add('select * from REGISTROS where data=:data');
-      ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date); //.value também
-      Open();
-    end;
-    while not qryRepetido.Eof do begin
-      if qryRepetido.Fields[1].AsString = 'CONTADOR' then begin
-        inc(contador);
-        if contador > 1 then begin
-          ShowMessage('Há dois registros "CONTADOR" no mesmo dia.');
-        end;
-      end;
-      qryRepetido.Next;
-    end;
-  finally
-    qryRepetido.Free;
-  end;
-end;
-
+//função que previne o valor de ser nulo
 function TfrmPrincipal.SeNulo(query : TFDQuery; campo : string) : real;
 begin
-  if query['sum('+campo+')'] = null then
+  if query[campo] = null then
     Result := 0
   else
-    Result := query['sum('+campo+')'];
+    Result := query[campo];
 end;
 
 //mostra os registros no grid por data
@@ -192,6 +177,7 @@ end;
 procedure TfrmPrincipal.dtpPrincipalChange(Sender: TObject);
 begin
   GridPorData(dtpPrincipal);
+  Calculos();
 end;
 
 procedure TfrmPrincipal.dtpPrincipalCloseUp(Sender: TObject);
@@ -219,6 +205,7 @@ begin
     Application.MessageBox('Banco de dados não encontrado.', 'Erro', mb_ok + MB_ICONERROR );
   end;
   dtpPrincipal.Date := Now;
+  Calculos();
 end;
 
 procedure TfrmPrincipal.sbtAlterarClick(Sender: TObject);
@@ -234,6 +221,7 @@ begin
       end;
     finally
       frmVenda.FreeOnRelease;
+      Calculos();
     end;
   end;
 end;
@@ -263,6 +251,7 @@ begin
       dtmPrincipal.qryPrincipal.Refresh;
   finally
     frmVenda.FreeOnRelease;
+    Calculos();
   end;
 end;
 
@@ -274,8 +263,11 @@ begin
       with dtmPrincipal.qryPrincipal do begin
         Append;
         FieldByName('nm_descricao').value := 'OS ' + frmOS.edtNROs.text;
+
+        //pega o valor da comissão por OS
         FieldByName('vlr_servico').value  := PegaQry(dtmPrincipal.conPrincipal,
         'tb_conf', 'vlr_servico', '1');
+        //-----------------------------//
         FieldByName('fk_nm_usuario').value := 1;
         FieldByName('dt_data').value := dtpPrincipal.Date;
         Post;
