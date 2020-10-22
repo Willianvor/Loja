@@ -5,7 +5,7 @@ object dtmPrincipal: TdtmPrincipal
   object conPrincipal: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\' +
+        'Database=C:\Users\Windows\Documents\Embarcadero\Studio\Projects\' +
         '- Github\Loja\Loja.mdb'
       'User_Name=administrador'
       'Password=1407'
@@ -16,7 +16,6 @@ object dtmPrincipal: TdtmPrincipal
     Top = 6
   end
   object qryPrincipal: TFDQuery
-    Active = True
     Connection = conPrincipal
     SQL.Strings = (
       'select * from tb_vendas inner join tb_usuario'
@@ -96,7 +95,6 @@ object dtmPrincipal: TdtmPrincipal
     Top = 54
   end
   object qryUsuario: TFDQuery
-    Active = True
     Connection = conPrincipal
     SQL.Strings = (
       'select * from tb_usuario')
@@ -109,7 +107,6 @@ object dtmPrincipal: TdtmPrincipal
     Top = 54
   end
   object qryConf: TFDQuery
-    Active = True
     Connection = conPrincipal
     SQL.Strings = (
       'select * from tb_conf')
@@ -196,5 +193,24 @@ object dtmPrincipal: TdtmPrincipal
       ReadOnly = True
       Size = 255
     end
+  end
+  object qryComissao: TFDQuery
+    Active = True
+    Connection = conPrincipal
+    SQL.Strings = (
+      
+        'select dt_pagamento, nm_usuario, dt_inicio_comissao, dt_final_co' +
+        'missao, nr_porcentagem, vlr_comissao, vlr_adicionar, vlr_deduzir' +
+        ', vlr_total, nm_observacoes'
+      'from tb_comissao'
+      'inner join tb_usuario'
+      'ON tb_usuario.id_usuario = tb_comissao.id_comissionado')
+    Left = 312
+    Top = 8
+  end
+  object dtsComissao: TDataSource
+    DataSet = qryComissao
+    Left = 312
+    Top = 54
   end
 end

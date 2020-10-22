@@ -48,6 +48,8 @@ type
     CurrencyField8: TCurrencyField;
     IntegerField2: TIntegerField;
     WideStringField2: TWideStringField;
+    qryComissao: TFDQuery;
+    dtsComissao: TDataSource;
   private
     { Private declarations }
   public

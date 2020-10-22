@@ -12,6 +12,7 @@ object frmComissoes: TfrmComissoes
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlComandos: TPanel
@@ -21,8 +22,19 @@ object frmComissoes: TfrmComissoes
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 64
-    ExplicitTop = 96
-    ExplicitWidth = 185
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 41
+    Width = 777
+    Height = 353
+    Align = alClient
+    DataSource = dtmPrincipal.dtsComissao
+    TabOrder = 1
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
 end
