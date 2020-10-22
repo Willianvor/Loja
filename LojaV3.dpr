@@ -6,7 +6,8 @@ uses
   BancoDados in 'Menu\Arquivo\BancoDados.pas' {frmBancoDados},
   uVenda in 'uVenda.pas' {frmVenda},
   uOS in 'uOS.pas' {frmOS},
-  uPrincipal in 'uPrincipal.pas' {frmPrincipal};
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uComissao in 'uComissao.pas' {frmComissoes};
 
 {$R *.res}
 
@@ -17,5 +18,6 @@ begin
   Application.CreateForm(TdtmPrincipal, dtmPrincipal);
   Application.CreateForm(TfrmBancoDados, frmBancoDados);
   Application.CreateForm(TfrmOS, frmOS);
+  Application.CreateForm(TfrmComissoes, frmComissoes);
   Application.Run;
 end.

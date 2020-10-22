@@ -506,6 +506,15 @@ object frmPrincipal: TfrmPrincipal
     Height = 46
     Align = alTop
     TabOrder = 2
+    object sbtComissoes: TSpeedButton
+      Left = 673
+      Top = 1
+      Width = 88
+      Height = 44
+      Align = alLeft
+      Caption = 'COMISS'#213'ES'
+      OnClick = sbtComissoesClick
+    end
     object Panel1: TPanel
       Left = 481
       Top = 1
@@ -767,36 +776,43 @@ object frmPrincipal: TfrmPrincipal
       item
         Expanded = False
         FieldName = 'vlr_desconto_usuario'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_dinheiro'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_cartao'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_custo'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_lucro'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_debito'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'vlr_nao_faturar'
+        Width = 64
         Visible = True
       end>
   end

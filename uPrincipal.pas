@@ -8,7 +8,8 @@ uses
     System.SysUtils, Vcl.Forms, Winapi.Windows, Winapi.Messages, uOS, uAtalhos, BancoDados,
     Vcl.Controls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  uComissao;
 
 type
   TfrmPrincipal = class(TForm)
@@ -45,6 +46,7 @@ type
     Label11: TLabel;
     pnlVlrLucro: TPanel;
     Button1: TButton;
+    sbtComissoes: TSpeedButton;
     procedure sbtNovaVendaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbtExcluirClick(Sender: TObject);
@@ -53,6 +55,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure dtpPrincipalChange(Sender: TObject);
     procedure dtpPrincipalCloseUp(Sender: TObject);
+    procedure sbtComissoesClick(Sender: TObject);
   private
     procedure Calculos;
     //procedure VerificaRepetido;
@@ -225,6 +228,17 @@ begin
       frmVenda.FreeOnRelease;
       Calculos();
     end;
+  end;
+end;
+
+procedure TfrmPrincipal.sbtComissoesClick(Sender: TObject);
+begin
+  try
+    Application.CreateForm(TfrmComissoes, frmComissoes);
+    frmComissoes.ShowModal;
+  finally
+    frmComissoes.FreeOnRelease;
+    Calculos();
   end;
 end;
 
