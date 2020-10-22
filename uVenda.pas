@@ -64,7 +64,7 @@ uses uPrincipalOld, uAtalhos, uPrincipal;
 procedure TfrmVenda.CalculaLucro();
 begin
   with dtmPrincipal.qryPrincipal do begin
-    if State = dsInsert then begin
+    if (State = dsInsert) or (State = dsEdit) then begin
       FieldByName('vlr_lucro').AsFloat := FieldByName('vlr_dinheiro').AsFloat
       + FieldByName('vlr_cartao').AsFloat - FieldByName('vlr_custo').AsFloat;
     end;

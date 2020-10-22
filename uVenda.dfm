@@ -224,6 +224,7 @@ object frmVenda: TfrmVenda
     DataField = 'vlr_cartao'
     DataSource = dtmPrincipal.dtsPrincipal
     TabOrder = 4
+    OnChange = dbeCartaoChange
   end
   object dbeDinheiro: TDBEdit
     Left = 29

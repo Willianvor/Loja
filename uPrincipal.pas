@@ -89,7 +89,7 @@ end;
 procedure TfrmPrincipal.Calculos();
 var
   qryCalc, qryOntem : TFDQuery;
-  vlr_dinheiro, vlr_cartao, vlr_lucro, vlr_servico, vlr_debito,
+  vlr_dinheiro, vlr_cartao, vlr_lucro, vlr_servico, vlr_debito, nao_faturado,
   dinheiroAnterior, debitoAnterior, sangriaAnterior, caixa, faturado : real;
 begin
   qryCalc := TFDQuery.Create(nil);
@@ -115,14 +115,15 @@ begin
     vlr_servico  := SeNulo(qryCalc, 'SERVICO');
     vlr_debito   := SeNulo(qryCalc, 'DEBITO');
 
-    faturado     := vlr_dinheiro + vlr_cartao;
+
+    faturado := vlr_dinheiro + vlr_cartao;
 
     //Saldo anterior//
     with qryOntem do begin
       Close;
       SQL.Clear;
       SQL.Add('select sum(vlr_dinheiro) as DINHEIRO, sum(vlr_debito) as DEBITO,');
-      SQL.Add('sum(vlr_sangria) as SANGRIA from tb_vendas');
+      SQL.Add('sum(vlr_sangria) as SANGRIA, sum(vlr_nao_faturar) as N_FATURADO from tb_vendas');
       SQL.Add('where dt_data between #2000-01-01# and :data');
       ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date);
       Open();
@@ -131,9 +132,10 @@ begin
     dinheiroAnterior:= SeNulo(qryOntem, 'dinheiro');
     debitoAnterior  := SeNulo(qryOntem, 'debito');
     sangriaAnterior := SeNulo(qryOntem, 'sangria');
+    nao_faturado    := SeNulo(qryOntem, 'N_FATURADO');
     //--------------//
 
-    caixa := dinheiroAnterior - debitoAnterior - sangriaAnterior;
+    caixa := dinheiroAnterior + nao_faturado - debitoAnterior - sangriaAnterior;
 
     //formata o valor para o painel
     ValorRS(pnlVlrCaixa, caixa);
@@ -272,6 +274,7 @@ begin
         FieldByName('dt_data').value := dtpPrincipal.Date;
         Post;
         Refresh;
+        Calculos();
       end;
     end;
   finally
