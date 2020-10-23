@@ -95,6 +95,7 @@ object dtmPrincipal: TdtmPrincipal
     Top = 54
   end
   object qryUsuario: TFDQuery
+    Active = True
     Connection = conPrincipal
     SQL.Strings = (
       'select * from tb_usuario')
@@ -199,9 +200,9 @@ object dtmPrincipal: TdtmPrincipal
     Connection = conPrincipal
     SQL.Strings = (
       
-        'select dt_pagamento, nm_usuario, dt_inicio_comissao, dt_final_co' +
-        'missao, nr_porcentagem, vlr_comissao, vlr_adicionar, vlr_deduzir' +
-        ', vlr_total, nm_observacoes'
+        'select dt_pagamento, id_comissionado, nm_usuario, dt_inicio_comi' +
+        'ssao, dt_final_comissao, nr_porcentagem, vlr_comissao, vlr_adici' +
+        'onar, vlr_deduzir, vlr_total, nm_observacoes'
       'from tb_comissao'
       'inner join tb_usuario'
       'ON tb_usuario.id_usuario = tb_comissao.id_comissionado')

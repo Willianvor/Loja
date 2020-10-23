@@ -118,7 +118,6 @@ begin
     vlr_servico  := SeNulo(qryCalc, 'SERVICO');
     vlr_debito   := SeNulo(qryCalc, 'DEBITO');
 
-
     faturado := vlr_dinheiro + vlr_cartao;
 
     //Saldo anterior//

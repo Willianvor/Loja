@@ -7,7 +7,8 @@ uses
   uVenda in 'uVenda.pas' {frmVenda},
   uOS in 'uOS.pas' {frmOS},
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
-  uComissao in 'uComissao.pas' {frmComissoes};
+  uComissao in 'uComissao.pas' {frmComissoes},
+  uGerarComissao in 'uGerarComissao.pas' {frmGerarComissao};
 
 {$R *.res}
 
@@ -19,5 +20,6 @@ begin
   Application.CreateForm(TfrmBancoDados, frmBancoDados);
   Application.CreateForm(TfrmOS, frmOS);
   Application.CreateForm(TfrmComissoes, frmComissoes);
+  Application.CreateForm(TfrmGerarComissao, frmGerarComissao);
   Application.Run;
 end.
