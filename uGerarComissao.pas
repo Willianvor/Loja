@@ -39,6 +39,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dtpDataInicioComissaoChange(Sender: TObject);
+    procedure DBEdit5Exit(Sender: TObject);
   private
     procedure CalcularComissao;
     { Private declarations }
@@ -84,6 +85,11 @@ begin
   finally
     qryCalcular.Free;
   end;
+end;
+
+procedure TfrmGerarComissao.DBEdit5Exit(Sender: TObject);
+begin
+  CalcularComissao;
 end;
 
 procedure TfrmGerarComissao.dtpDataInicioComissaoChange(Sender: TObject);

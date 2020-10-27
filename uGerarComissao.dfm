@@ -97,9 +97,6 @@
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = -2
-    ExplicitTop = 184
-    ExplicitWidth = 458
     DesignSize = (
       342
       41)
@@ -121,7 +118,6 @@
       Caption = 'CANCELAR'
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 363
     end
   end
   object DBEdit5: TDBEdit
@@ -132,6 +128,7 @@
     DataField = 'nr_porcentagem'
     DataSource = dtmPrincipal.dtsComissao
     TabOrder = 1
+    OnExit = DBEdit5Exit
   end
   object DBEdit6: TDBEdit
     Left = 178

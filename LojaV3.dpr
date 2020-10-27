@@ -19,7 +19,5 @@ begin
   Application.CreateForm(TdtmPrincipal, dtmPrincipal);
   Application.CreateForm(TfrmBancoDados, frmBancoDados);
   Application.CreateForm(TfrmOS, frmOS);
-  Application.CreateForm(TfrmComissoes, frmComissoes);
-  Application.CreateForm(TfrmGerarComissao, frmGerarComissao);
   Application.Run;
 end.
