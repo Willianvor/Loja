@@ -62,9 +62,9 @@ type
     { Private declarations }
   public
     procedure GridPorData(dtp: TDateTimePicker);
-    function SeNulo(query: TFDQuery; campo: string): real;
-    procedure ValorRS(painel: TPanel; valor: Real);overload;
-    procedure ValorRS(painel: TPanel; str : string; valor: Real);overload;
+    function SeNulo(query: TFDQuery; campo: string): real; overload;
+    procedure ValorRS(painel: TPanel; valor: Real); overload;
+    procedure ValorRS(painel: TPanel; str : string; valor: Real); overload;
     { Public declarations }
   end;
 
@@ -93,7 +93,7 @@ procedure TfrmPrincipal.Calculos();
 var
   qryCalc, qryOntem : TFDQuery;
   vlr_dinheiro, vlr_cartao, vlr_lucro, vlr_servico, vlr_debito, nao_faturado,
-  dinheiroAnterior, debitoAnterior, sangriaAnterior, caixa, faturado : real;
+  dinheiroAnterior, debitoAnterior, sangriaAnterior, caixa, faturado, comissao : real;
 begin
   qryCalc := TFDQuery.Create(nil);
   qryCalc.Connection := dtmPrincipal.conPrincipal;
@@ -131,13 +131,24 @@ begin
       Open();
     end;
 
+    //valor das comissões para deduzir do caixa
+//    with dtmPrincipal.qryComissao do begin
+//      Close;
+//      SQL.Clear;
+//      SQL.Add('select sum(vlr_total) as COMISSAO from tb_comissao');
+//      SQL.Add('where dt_data between #2000-01-01# and :data');
+//      ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpPrincipal.Date);
+//      Open();
+//    end;
+
     dinheiroAnterior:= SeNulo(qryOntem, 'dinheiro');
     debitoAnterior  := SeNulo(qryOntem, 'debito');
     sangriaAnterior := SeNulo(qryOntem, 'sangria');
     nao_faturado    := SeNulo(qryOntem, 'N_FATURADO');
+//    comissao        := SeNulo(dtmPrincipal.qryComissao, 'COMISSAO');
     //--------------//
 
-    caixa := dinheiroAnterior + nao_faturado - debitoAnterior - sangriaAnterior;
+    caixa := dinheiroAnterior + nao_faturado - debitoAnterior - sangriaAnterior - comissao;
 
     //formata o valor para o painel
     ValorRS(pnlVlrCaixa, caixa);

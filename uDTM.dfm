@@ -5,7 +5,7 @@ object dtmPrincipal: TdtmPrincipal
   object conPrincipal: TFDConnection
     Params.Strings = (
       
-        'Database=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\' +
+        'Database=C:\Users\Windows\Documents\Embarcadero\Studio\Projects\' +
         '- Github\Loja\Loja.mdb'
       'User_Name=administrador'
       'Password=1407'
@@ -200,8 +200,8 @@ object dtmPrincipal: TdtmPrincipal
     SQL.Strings = (
       
         'select dt_pagamento, id_comissionado, nm_usuario, dt_inicio_comi' +
-        'ssao, dt_final_comissao, nr_porcentagem, vlr_comissao, vlr_adici' +
-        'onar, vlr_deduzir, vlr_total, nm_observacoes'
+        'ssao, dt_final_comissao, nr_porcentagem, nr_divisao_servico, vlr' +
+        '_comissao, vlr_adicionar, vlr_deduzir, vlr_total, nm_observacoes'
       'from tb_comissao'
       'inner join tb_usuario'
       'ON tb_usuario.id_usuario = tb_comissao.id_comissionado')

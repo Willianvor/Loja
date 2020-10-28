@@ -22,7 +22,6 @@ object frmComissoes: TfrmComissoes
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 777
     object sbtAdicionar: TSpeedButton
       Left = 1
       Top = 1

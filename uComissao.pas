@@ -33,8 +33,8 @@ begin
     Close;
     SQL.Clear;
     SQL.Add('select dt_pagamento, id_comissionado, nm_usuario, dt_inicio_comissao, dt_final_comissao,');
-    SQL.Add('nr_porcentagem, vlr_comissao, vlr_adicionar, vlr_deduzir, vlr_total, nm_observacoes from tb_comissao');
-    SQL.Add('inner join tb_usuario');
+    SQL.Add('nr_porcentagem, nr_divisao_servico, vlr_comissao, vlr_adicionar,');
+    SQL.Add('vlr_deduzir, vlr_total, nm_observacoes from tb_comissao inner join tb_usuario');
     SQL.Add('ON tb_usuario.id_usuario = tb_comissao.id_comissionado');
     Open();
   end;

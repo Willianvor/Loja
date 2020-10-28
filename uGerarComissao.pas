@@ -15,31 +15,43 @@ type
     pnlComandos: TPanel;
     btnSalvar: TButton;
     btnCancelar: TButton;
+    pnlPainel1: TPanel;
+    gpbDadosComissionado: TGroupBox;
     lblDataPagamento: TLabel;
     lblComissionado: TLabel;
-    lblDataInicioComissao: TLabel;
-    lblDataFinalComissao: TLabel;
-    lblPorcentagemComissao: TLabel;
-    DBEdit5: TDBEdit;
-    lblVlrComissão: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
-    DBEdit7: TDBEdit;
-    Label8: TLabel;
-    DBEdit8: TDBEdit;
-    lblTotalComissao: TLabel;
-    DBEdit9: TDBEdit;
-    Label10: TLabel;
     dtpDataComissao: TDateTimePicker;
     DBLookupComboBox1: TDBLookupComboBox;
+    gpbDatasComissao: TGroupBox;
+    lblAte: TLabel;
     dtpDataInicioComissao: TDateTimePicker;
     dtpDataFinalComissao: TDateTimePicker;
+    pnlPainel2: TPanel;
+    gpbAddRed: TGroupBox;
+    lblAdicionar: TLabel;
+    lblDeduzir: TLabel;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    gpbDivisoes: TGroupBox;
+    lblPorcentagemComissao: TLabel;
+    lblDivisaoServico: TLabel;
+    DBEdit5: TDBEdit;
+    DBEdit1: TDBEdit;
+    pnlPainel3: TPanel;
+    gpbComissao: TGroupBox;
+    lblVlrComissãoBruta: TLabel;
+    lbLComissaoLiquida: TLabel;
+    DBEdit6: TDBEdit;
+    DBEdit9: TDBEdit;
+    gpbObervacoes: TGroupBox;
     memObservacoes: TMemo;
+    lblInicio: TLabel;
+    lblFinal: TLabel;
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dtpDataInicioComissaoChange(Sender: TObject);
     procedure DBEdit5Exit(Sender: TObject);
+    procedure DBEdit1Exit(Sender: TObject);
   private
     procedure CalcularComissao;
     { Private declarations }
@@ -59,7 +71,7 @@ uses uPrincipal;
 //Calcula as comissões
 procedure TfrmGerarComissao.CalcularComissao();
 var
-  porcentagem, lucro, servico, comissao, comissaoTotal : Real;
+  porcentagem, lucro, servico, comissaoBruta, comissaoLiquida, divisao_servico : Real;
   qryCalcular : TFDQuery;
 begin
   try
@@ -73,18 +85,36 @@ begin
       ParamByName('data').AsString := FormatDateTime('yyyy-mm-dd', dtpDataInicioComissao.Date);
       Open();
     end;
-    porcentagem := dtmPrincipal.qryComissao.FieldByName('nr_porcentagem').Value / 100;
+    porcentagem := frmPrincipal.SeNulo(dtmPrincipal.qryComissao, 'nr_porcentagem');
+    porcentagem := porcentagem / 100;
+    divisao_servico := frmPrincipal.SeNulo(dtmPrincipal.qryComissao, 'nr_divisao_servico');
 
     lucro   := frmPrincipal.SeNulo(qryCalcular, 'LUCRO');
     servico := frmPrincipal.SeNulo(qryCalcular, 'SERVICO');
-    //colocar no programa a opção de dividir por quantos quiser
-    comissao := (lucro * porcentagem) + (servico / 2);
 
-    dtmPrincipal.qryComissao.FieldByName('vlr_comissao').AsFloat := comissao;
+    if divisao_servico = 0 then
+      comissaoBruta := (lucro * porcentagem) + (servico)
+    else
+      comissaoBruta := (lucro * porcentagem) + (servico / divisao_servico);
 
+    //comissão bruta
+    dtmPrincipal.qryComissao.FieldByName('vlr_comissao').AsFloat := comissaoBruta;
+
+    //comissao liquida
+    with dtmPrincipal.qryComissao do begin
+      comissaoLiquida := FieldByName('vlr_comissao').AsFloat + FieldByName('vlr_adicionar').AsFloat -
+      FieldByName('vlr_deduzir').AsFloat;
+    end;
+
+    dtmPrincipal.qryComissao.FieldByName('vlr_total').AsFloat := comissaoLiquida;
   finally
     qryCalcular.Free;
   end;
+end;
+
+procedure TfrmGerarComissao.DBEdit1Exit(Sender: TObject);
+begin
+  CalcularComissao;
 end;
 
 procedure TfrmGerarComissao.DBEdit5Exit(Sender: TObject);
@@ -106,7 +136,10 @@ end;
 procedure TfrmGerarComissao.btnSalvarClick(Sender: TObject);
 begin
   dtmPrincipal.qryComissao.FieldByName('dt_pagamento').Value := dtpDataComissao.Date;
-  dtmPrincipal.qryPrincipal.Post;
+  dtmPrincipal.qryComissao.FieldByName('dt_inicio_comissao').Value := dtpDataInicioComissao.Date;
+  dtmPrincipal.qryComissao.FieldByName('dt_final_comissao').Value := dtpDataFinalComissao.Date;
+  dtmPrincipal.qryComissao.FieldByName('nm_observacoes').Value := memObservacoes.Text;
+  dtmPrincipal.qryComissao.Post;
   ModalResult := mrOk;
 end;
 
